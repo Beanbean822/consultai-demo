@@ -4,332 +4,332 @@
   "sourceDocs": [
     {
       "role": "interview_prompt",
-      "name": "AI 访谈转 OGSM 策略提炼.docx"
+      "name": "Interview-to-OGSM Strategy Extraction.docx"
     },
     {
       "role": "ogsm_case",
-      "name": "OGSM模块结合各方面客户信息和方....docx"
+      "name": "JM OGSM Integrated Case Pack.docx"
     }
   ],
   "project": {
     "metadata": {
-      "caseName": "jm公司中央空调智慧节能项目",
-      "industry": "建筑节能 / 人工智能",
-      "framework": "OGSM 战略解码",
-      "companyDescription": "jm公司是一家中央空调系统智慧节能服务商，通过机理模型和AI算法实现20%-30%的能效提升。目前处于业务快速增长期，正从“项目制”向“订阅服务制”转型。"
+      "caseName": "JM Smart Building Energy Efficiency Program",
+      "industry": "Building Energy Efficiency / AI",
+      "framework": "OGSM Mapping",
+      "companyDescription": "JM is a smart building energy-efficiency service provider for central air-conditioning systems. It uses physics-based models and AI algorithms to deliver 20%-30% energy savings. The company is in a rapid growth phase and is shifting from a project-based model to a subscription-service model."
     },
     "brief": {
-      "caseDescription": "jm公司是一家中央空调系统智慧节能服务商，通过机理模型和AI算法实现20%-30%的能效提升。目前处于业务快速增长期，正从“项目制”向“订阅服务制”转型。",
-      "coreProblem": "解决战略目标与执行路径脱节、大客户销售能力不足、交付效率低下以及激励机制不匹配的问题。",
-      "selectionReason": "材料包含完整的项目建议书、访谈纪要及组织诊断报告，问题链条清晰，适合通过OGSM将定性愿景拆解为定量指标与具体动作。"
+      "caseDescription": "JM is a smart building energy-efficiency service provider for central air-conditioning systems. It uses physics-based models and AI algorithms to deliver 20%-30% energy savings. The company is in a rapid growth phase and is shifting from a project-based model to a subscription-service model.",
+      "coreProblem": "The core challenge is to close the gap between strategic ambition and execution by improving enterprise sales capability, delivery efficiency, and incentive alignment.",
+      "selectionReason": "The materials include a proposal, interview notes, and organization diagnosis, making this a strong OGSM case: the growth ambition is clear, but the path from objectives to actions and measures still needs to be structured."
     },
     "setupDefaults": {
-      "projectName": "jm公司中央空调智慧节能项目",
-      "topic": "jm公司中央空调智慧节能项目与订阅业务转型",
-      "goal": "解决战略目标与执行路径脱节、大客户销售能力不足、交付效率低下以及激励机制不匹配的问题。",
+      "projectName": "JM Smart Building Energy Efficiency Program",
+      "topic": "JM Subscription-Service Growth and Operating Model Shift",
+      "goal": "Close the gap between strategic ambition and execution by strengthening enterprise sales capability, delivery efficiency, and incentive alignment.",
       "framework": "ogsm"
     }
   },
   "materials": {
-    "backgroundSummary": "jm公司在碳中和及经济效益驱动下迎来发展机遇，但内部管理滞后。目前面临如何通过战略落地体系，实现从目标制定到绩效管理闭环的挑战。公司急需提升组织能力以支撑业务扩张，特别是在高净值的“订阅服务”业务上实现突破。",
+    "backgroundSummary": "JM is benefiting from carbon-reduction demand and the push for operating efficiency, but internal management capability has not kept pace. The business now needs a stronger strategy-to-execution system that links targets, ownership, performance management, and review cadence. Building this operating muscle is especially important for scaling the higher-value subscription-service business.",
     "observationBullets": [
-      "销售环节：缺乏大客户销售专岗，现有人手思维单一，组织协同能力弱，无法深入捕捉系统性需求。",
-      "交付与产品：产品稳定性有待加强，现场交付常与计划脱节导致延期，缺乏标准化流程。",
-      "组织协同：组织架构不够清晰，跨部门沟通成本高，绩效结果的应用（如晋升、淘汰）不透明。",
-      "人才管理：核心人才激励不足，招聘速度滞后于业务增长，缺乏清晰的员工职业发展路径。",
-      "战略认知：中高层对愿景有共识，但在年度‘硬仗’的打法和资源分配上尚未达成拉通。"
+      "Sales: there is no dedicated enterprise-sales role, current coverage is fragmented, and teams struggle to capture system-level client demand.",
+      "Delivery and product: product stability still needs improvement, field delivery often drifts from plan, and standardized delivery routines are incomplete.",
+      "Organization: the structure is not fully clear, cross-functional communication costs remain high, and the use of performance outcomes for promotion or elimination lacks transparency.",
+      "Talent: incentives for core talent are not strong enough, hiring speed trails business growth, and employee development paths are still unclear.",
+      "Strategy alignment: senior leaders share the same long-term vision, but the annual priority battles and resource allocation rules are not yet aligned."
     ],
     "sampleDocuments": [
       {
-        "name": "AI 访谈转 OGSM 策略提炼.docx",
+        "name": "Interview-to-OGSM Strategy Extraction.docx",
         "type": "docx",
-        "role": "访谈转 OGSM Prompt 设计",
-        "summary": "沉淀了访谈转 OGSM 的 Prompt 协议、语义映射方式和 JSON 输出要求。"
+        "role": "OGSM prompt design",
+        "summary": "Captures the prompt structure, semantic mapping, and JSON output specification for extracting OGSM elements from interviews."
       },
       {
-        "name": "OGSM模块结合各方面客户信息和方....docx",
+        "name": "JM OGSM Integrated Case Pack.docx",
         "type": "docx",
-        "role": "案例初始化材料包",
-        "summary": "包含案例背景、观察纪要、关键问题和 OGSM 原型表，可直接作为演示输入。"
+        "role": "Case initialization pack",
+        "summary": "Includes the case background, observation notes, key issues, and an OGSM draft table for the demo workflow."
       }
     ]
   },
   "keyQuestions": [
     {
       "id": "kq-1",
-      "title": "订阅服务增长目标缺乏可执行抓手",
-      "question": "如何确保年度实现不少于60个‘订阅服务’合同签署，并支撑4000万的确认收入目标？",
+      "title": "Subscription-service growth targets lack executable levers",
+      "question": "How can JM secure at least 60 subscription-service contracts this year and support a RMB 40 million recognized-revenue target?",
       "priority": "high",
       "impact": "High",
-      "description": "年度订阅服务增长目标已经提出，但缺少拆解到季度节奏、负责人与执行动作的落地抓手。",
-      "source": "OGSM 关键问题提炼 / 结果页原型",
-      "evidence": "年度实现不少于60个订阅服务合同签署，并支撑4000万的确认收入目标。",
-      "strategyHint": "把年度签约、确认收入和利润率目标拆解为季度目标、区域负责人和 review 节点。",
-      "measureHint": "重点跟踪订阅服务合同数、确认收入、净利润率。"
+      "description": "The annual subscription-growth ambition is clear, but it has not yet been translated into quarterly pacing, ownership, and execution moves.",
+      "source": "OGSM issue extraction / results prototype",
+      "evidence": "The plan calls for at least 60 subscription-service contracts and RMB 40 million in recognized revenue.",
+      "strategyHint": "Break annual contract, revenue, and margin targets into quarterly targets, named owners, and review checkpoints.",
+      "measureHint": "Track subscription contract count, recognized revenue, and net margin."
     },
     {
       "id": "kq-2",
-      "title": "核心区域渠道建设路径不清晰",
-      "question": "针对北上广深等核心市场，如何构建并激活不少于10个战略渠道伙伴以加速渗透？",
+      "title": "The path for building channels in core regions remains unclear",
+      "question": "How should JM build and activate at least 10 strategic channel partners in Beijing, Shanghai, Guangzhou, and Shenzhen to accelerate penetration?",
       "priority": "high",
       "impact": "High",
-      "description": "核心市场的渠道目标明确，但招募标准、激活方式和区域打法仍不清晰。",
-      "source": "关键问题提炼 / 观察纪要",
-      "evidence": "在北上广深等核心区域，如何建立不少于10个战略渠道伙伴以加速市场渗透。",
-      "strategyHint": "围绕北上广深核心市场设计渠道招募标准、联合打法和激活机制。",
-      "measureHint": "重点跟踪战略渠道伙伴数量、渠道签约占比和区域渗透率。"
+      "description": "The priority markets are known, but the partner profile, activation model, and regional playbook are still not defined clearly.",
+      "source": "Issue extraction / observation notes",
+      "evidence": "The case targets at least 10 strategic channel partners in core regions such as Beijing, Shanghai, Guangzhou, and Shenzhen.",
+      "strategyHint": "Design partner qualification rules, joint go-to-market motions, and activation mechanisms for the top regions.",
+      "measureHint": "Track strategic partner count, channel-sourced contract share, and regional penetration."
     },
     {
       "id": "kq-3",
-      "title": "交付效率与人才培养体系支撑不足",
-      "question": "如何优化员工全生命周期管理（从入职到专业化培养），将新人胜任周期缩短30%？",
+      "title": "Delivery efficiency and talent development are not strong enough to support scale",
+      "question": "How can JM improve the employee lifecycle and onboarding-to-ramp process so that new-hire readiness time is reduced by 30%?",
       "priority": "medium",
       "impact": "Medium",
-      "description": "交付延期、流程不稳和新人培养慢的问题并存，组织能力尚不足以支撑业务扩张。",
-      "source": "观察纪要 / 组织诊断",
-      "evidence": "现场交付与计划脱节导致延期；招聘速度跟不上业务增长，缺乏清晰的员工职业发展路径。",
-      "strategyHint": "同步补齐标准化交付流程、员工体验地图和新人培养路径。",
-      "measureHint": "重点跟踪新人胜任周期、交付节点准时率和跨部门协同效率。"
+      "description": "Delivery delays, unstable process execution, and slow talent ramp-up are happening at the same time, indicating that organization capability still lags the growth plan.",
+      "source": "Observation notes / organization diagnosis",
+      "evidence": "Field delivery often slips from plan, hiring has not kept up with growth, and employees lack a clear development path.",
+      "strategyHint": "Upgrade delivery standards, employee journey design, and role-specific capability-building paths in parallel.",
+      "measureHint": "Track new-hire ramp time, on-time delivery milestones, and cross-functional execution efficiency."
     },
     {
       "id": "kq-4",
-      "title": "激励机制与业绩目标未有效挂钩",
-      "question": "如何设计与OGSM目标直接挂钩的奖金及股权激励方案，以激发销售与交付团队的主动性？",
+      "title": "Incentives are not tightly linked to business outcomes",
+      "question": "How should JM redesign bonus and equity incentives so they are directly linked to OGSM goals and reinforce sales and delivery accountability?",
       "priority": "medium",
       "impact": "Medium",
-      "description": "当前奖金与股权激励未直接反映订阅业务和确认收入目标，团队主动性难以被放大。",
-      "source": "观察纪要 / 关键问题提炼",
-      "evidence": "如何设计与OGSM目标直接挂钩的奖金及股权激励方案，以激发销售与交付团队的主动性。",
-      "strategyHint": "让奖金池、股权激励和确认收入、交付表现形成直接联动。",
-      "measureHint": "重点跟踪奖金挂钩比例、绩效谈话完成率和团队主动性指标。"
+      "description": "Current bonus and equity mechanisms do not directly reward subscription growth or recognized revenue, which weakens execution ownership.",
+      "source": "Observation notes / issue extraction",
+      "evidence": "The case explicitly asks how to link bonus and equity design to OGSM targets and motivate both sales and delivery teams.",
+      "strategyHint": "Connect incentive pools directly to recognized revenue, delivery performance, and quarterly performance conversations.",
+      "measureHint": "Track payout linkage ratio, performance-conversation completion, and initiative ownership metrics."
     }
   ],
   "ogsmTable": [
     {
       "id": "ogsm-row-1",
-      "objective": "大量增加智慧建筑能效“订阅服务”",
+      "objective": "Scale the smart-building energy-efficiency subscription business",
       "goals": [
-        "签订不少于60个项目",
-        "第一季度签约额突破3000万元"
+        "Sign at least 60 projects",
+        "Reach RMB 30 million in signed value in Q1"
       ],
       "strategies": [
-        "主力推进长订阅模式（大项目>1000万）",
-        "通过渠道开拓加速业务增长"
+        "Prioritize long-term subscription deals for large accounts (> RMB 10 million)",
+        "Use channel expansion to accelerate growth"
       ],
       "measures": [
-        "长订阅项目占比 > 50%",
-        "渠道签约占比达到 40%"
+        "Long-term subscription deals > 50% of mix",
+        "Channel-sourced contracts reach 40%"
       ],
       "owners": [
-        "易倩",
-        "各区域负责人"
+        "Yiqian",
+        "Regional business leaders"
       ]
     },
     {
       "id": "ogsm-row-2",
-      "objective": "提升组织能力，保障战略落地",
+      "objective": "Strengthen organization capability to support execution",
       "goals": [
-        "核心人才离职率 < 10%",
-        "建立完整的战略 Review 机制"
+        "Keep regretted attrition of core talent below 10%",
+        "Establish a full strategic review mechanism"
       ],
       "strategies": [
-        "完善员工体验地图与文化宣导",
-        "重构基于业绩结果的激励与绩效体系"
+        "Improve employee journey design and culture reinforcement",
+        "Redesign incentives and performance mechanisms around business results"
       ],
       "measures": [
-        "完成通用版文化手册并实现100%覆盖",
-        "奖金发放与确认收入指标达成率挂钩"
+        "General culture handbook completed with 100% coverage",
+        "Bonus payout tied to recognized-revenue achievement"
       ],
       "owners": [
-        "人力资源负责人",
-        "核心管理层"
+        "HR lead",
+        "Core management team"
       ]
     }
   ],
   "frameworkOptions": [
     {
       "id": "swot",
-      "name": "SWOT 战略扫描",
-      "description": "适合快速识别业务的优势、短板、机会与风险。"
+      "name": "SWOT Scan",
+      "description": "Best for quickly identifying strengths, weaknesses, opportunities, and risks."
     },
     {
       "id": "ogsm",
-      "name": "OGSM 战略解码",
-      "description": "适合把目标拆解为目标、策略和衡量指标。"
+      "name": "OGSM Mapping",
+      "description": "Best for breaking objectives into goals, strategies, and measures."
     },
     {
       "id": "process",
-      "name": "流程审计（Process Audit）",
-      "description": "适合发现流程堵点、协作断点和效率问题。"
+      "name": "Process Audit",
+      "description": "Best for identifying process bottlenecks, collaboration gaps, and efficiency issues."
     },
     {
       "id": "valuechain",
-      "name": "价值链诊断（Value Chain Pulse）",
-      "description": "适合从端到端视角评估价值链表现与协同问题。"
+      "name": "Value Chain Pulse",
+      "description": "Best for evaluating end-to-end value-chain performance and coordination issues."
     }
   ],
   "sampleProject": {
-    "projectName": "jm公司中央空调智慧节能项目",
-    "topic": "jm公司中央空调智慧节能项目与订阅业务转型",
-    "goal": "解决战略目标与执行路径脱节、大客户销售能力不足、交付效率低下以及激励机制不匹配的问题。",
+    "projectName": "JM Smart Building Energy Efficiency Program",
+    "topic": "JM Subscription-Service Growth and Operating Model Shift",
+    "goal": "Close the gap between strategic ambition and execution by strengthening enterprise sales capability, delivery efficiency, and incentive alignment.",
     "framework": "ogsm"
   },
   "sampleDocuments": [
-    "AI 访谈转 OGSM 策略提炼.docx",
-    "OGSM模块结合各方面客户信息和方....docx"
+    "Interview-to-OGSM Strategy Extraction.docx",
+    "JM OGSM Integrated Case Pack.docx"
   ],
   "issueLibrary": {
     "swot": [
       {
         "id": "swot-1",
-        "title": "市场定位模糊导致销售漏斗瓶颈",
+        "title": "The value proposition is not differentiated enough to unlock enterprise demand",
         "impact": "High",
-        "description": "同类机器人厂商打法一致，客户无法区分价值主张，30% 线索被竞品抢走。"
+        "description": "Clients see limited differentiation versus alternative energy-saving offers, which weakens conversion in strategic accounts."
       },
       {
         "id": "swot-2",
-        "title": "服务交付成本高",
+        "title": "Service delivery cost remains too high",
         "impact": "Medium",
-        "description": "维保团队出勤效率低，每单成本高出行业基准 18%。"
+        "description": "Field efficiency is below benchmark, pushing service cost per project above target levels."
       },
       {
         "id": "swot-3",
-        "title": "渠道伙伴关系脆弱",
+        "title": "The partner ecosystem is not yet resilient",
         "impact": "Medium",
-        "description": "缺少激励模型与共创机制，新行业伙伴拓展缓慢。"
+        "description": "The current partner model lacks incentive alignment and a repeatable co-sell motion."
       },
       {
         "id": "swot-4",
-        "title": "硬件依赖单一供应商",
+        "title": "Critical capabilities still rely on a narrow supplier base",
         "impact": "High",
-        "description": "关键零部件只有一家合格供应商，供应中断风险高。"
+        "description": "Concentration of key technical dependencies increases operational and scaling risk."
       }
     ],
     "ogsm": [
       {
         "id": "ogsm-1",
-        "title": "订阅服务增长目标缺乏可执行抓手",
+        "title": "Subscription-service growth targets lack executable levers",
         "impact": "High",
-        "description": "年度订阅服务增长目标已经提出，但缺少拆解到季度节奏、负责人与执行动作的落地抓手。"
+        "description": "The annual growth ambition exists, but quarterly pacing, ownership, and execution mechanisms are still unclear."
       },
       {
         "id": "ogsm-2",
-        "title": "核心区域渠道建设路径不清晰",
+        "title": "The path for building channels in core regions remains unclear",
         "impact": "High",
-        "description": "核心市场的渠道目标明确，但招募标准、激活方式和区域打法仍不清晰。"
+        "description": "Core market priorities are known, but partner qualification, activation, and regional playbooks are not fully defined."
       },
       {
         "id": "ogsm-3",
-        "title": "交付效率与人才培养体系支撑不足",
+        "title": "Delivery efficiency and talent development are not strong enough to support scale",
         "impact": "Medium",
-        "description": "交付延期、流程不稳和新人培养慢的问题并存，组织能力尚不足以支撑业务扩张。"
+        "description": "Delivery slippage and slow talent ramp-up suggest the organization is not yet ready for the targeted scale-up."
       },
       {
         "id": "ogsm-4",
-        "title": "激励机制与业绩目标未有效挂钩",
+        "title": "Incentives are not tightly linked to business outcomes",
         "impact": "Medium",
-        "description": "当前奖金与股权激励未直接反映订阅业务和确认收入目标，团队主动性难以被放大。"
+        "description": "Current bonus and equity mechanisms do not sufficiently reinforce subscription growth and recognized revenue targets."
       }
     ],
     "process": [
       {
         "id": "proc-1",
-        "title": "L2-L3 流程角色模糊",
+        "title": "Role ownership across the delivery flow is unclear",
         "impact": "High",
-        "description": "交付流程泳道图缺少责任定义，交接时间被动延长。"
+        "description": "Handoffs stretch because responsibilities are not fully defined across major delivery stages."
       },
       {
         "id": "proc-2",
-        "title": "SOP 未和 KPI 绑定",
+        "title": "Standard operating routines are not linked to performance",
         "impact": "Medium",
-        "description": "流程执行检查清单不与绩效挂钩，合规性下降。"
+        "description": "Execution checklists exist, but they are not reinforced through performance management."
       },
       {
         "id": "proc-3",
-        "title": "工具链碎片化",
+        "title": "The tool chain is fragmented across teams",
         "impact": "Medium",
-        "description": "不同团队使用独立表格，缺乏单一数据源。"
+        "description": "Teams still rely on separate files and local trackers instead of a shared operating view."
       }
     ],
     "valuechain": [
       {
         "id": "vc-1",
-        "title": "薪酬激励与战略脱节",
+        "title": "Compensation design still reflects the old business model",
         "impact": "High",
-        "description": "薪酬方案仍围绕硬件销售，服务营收缺少激励。"
+        "description": "The incentive model still overweights traditional project wins and underweights subscription economics."
       },
       {
         "id": "vc-2",
-        "title": "人才盘点没有形成 Success Profile",
+        "title": "Talent review has not produced a clear success profile",
         "impact": "Medium",
-        "description": "核心岗位能力模型缺失，招聘与培养方向不明。"
+        "description": "Core roles still lack a shared capability model to guide hiring and development."
       },
       {
         "id": "vc-3",
-        "title": "绩效复盘机制弱",
+        "title": "Performance review routines are still weak",
         "impact": "Medium",
-        "description": "红绿灯仪表盘停留在概念，没有数据支撑复盘。"
+        "description": "Management dashboards remain conceptual and do not yet drive disciplined business review."
       }
     ]
   },
   "riskTemplates": [
     {
       "id": "strategy",
-      "title": "战略目标与执行路径脱节",
+      "title": "Strategy and execution remain disconnected",
       "badge": "badge-high",
-      "copy": "如果只定义年度目标而不补齐负责人、节奏和 review 机制，OGSM 很容易停留在纸面。"
+      "copy": "If annual targets are defined without owners, cadence, and review discipline, OGSM will remain a planning artifact rather than an operating system."
     },
     {
       "id": "delivery",
-      "title": "渠道与交付能力错配",
+      "title": "Channel growth could outpace delivery capability",
       "badge": "badge-medium",
-      "copy": "市场拓展速度如果快于交付标准化建设，会直接影响客户口碑与续约转化。"
+      "copy": "If market expansion accelerates before delivery standards are stabilized, client experience and renewal conversion will suffer."
     },
     {
       "id": "incentive",
-      "title": "激励机制无法支撑转型",
+      "title": "The incentive system may fail to support the business shift",
       "badge": "badge-low",
-      "copy": "若奖金和股权激励仍围绕旧业务模式设计，订阅制转型的主动性会明显不足。"
+      "copy": "If bonus and equity design continue to reflect the old model, teams will not fully commit to the subscription transition."
     }
   ],
   "recommendationPool": [
-    "建立年度 OGSM 总表，把 60 个订阅服务合同、4000 万确认收入和 15% 净利润率拆解到季度节奏。",
-    "设置大客户销售专岗，并在北上广深优先试点战略渠道伙伴打法。",
-    "围绕交付延期问题补齐标准化交付流程、泳道责任和 review 节点。",
-    "将奖金池与确认收入、交付节点准时率和季度绩效谈话完成率直接挂钩。",
-    "用员工体验地图和文化宣导手册缩短新人胜任周期，形成组织能力闭环。"
+    "Build a single OGSM master plan that breaks 60 subscription contracts, RMB 40 million recognized revenue, and margin targets into quarterly operating reviews.",
+    "Stand up a dedicated enterprise-sales motion and pilot a strategic channel-partner model first in the top-tier cities.",
+    "Stabilize delivery by defining standard work, role ownership, and review checkpoints for the major implementation stages.",
+    "Tie bonus pools directly to recognized revenue, on-time delivery milestones, and completion of quarterly performance conversations.",
+    "Use an employee-journey map and capability-building path to shorten new-hire ramp time and strengthen organization capacity."
   ],
   "analysisTemplate": {
     "summary": [
-      "jm 公司正处于从项目制向订阅服务制转型的关键阶段，当前核心问题不是缺少机会，而是战略、执行和激励尚未完全拉通。",
-      "从材料看，增长目标、渠道建设、交付能力和激励机制是最需要优先对齐的四条主线。",
-      "建议以 OGSM 为主框架，把年度硬仗拆解为季度目标、负责人和复盘节点，先在重点区域验证打法，再逐步复制。"
+      "JM is at a critical transition point from a project-based business to a subscription-service model. The central challenge is not a lack of opportunity, but weak alignment between strategic ambition, execution cadence, and incentives.",
+      "The materials point to four priority threads that need alignment first: growth target decomposition, channel build-out, delivery capability, and incentive design.",
+      "OGSM is the right lead framework because it can convert annual ambition into quarterly objectives, named owners, and review checkpoints that can be executed."
     ],
     "findings": [
-      "战略层：年度目标已出现，但资源分配、优先级和 review 节奏尚未完全拉通。",
-      "市场层：核心区域渠道拓展目标明确，但对应的招募标准、激活机制和打法设计仍需补齐。",
-      "组织层：交付流程、人才培养和绩效应用机制尚未形成闭环，难以支撑业务扩张。",
-      "激励层：奖金与股权激励尚未与订阅业务和确认收入目标形成直接挂钩。"
+      "Strategy: annual growth goals are visible, but resource allocation, priorities, and review rhythm are not yet fully aligned.",
+      "Market: core-region channel ambitions are clear, but partner qualification criteria, activation mechanisms, and regional playbooks remain incomplete.",
+      "Organization: delivery process, talent development, and performance application still do not form a closed loop strong enough for scale.",
+      "Incentives: bonus and equity design are not yet tightly linked to subscription growth and recognized revenue outcomes."
     ],
     "frameworkDetails": {
-      "title": "OGSM 战略解码",
-      "description": "材料包含完整的项目建议书、访谈纪要及组织诊断报告，问题链条清晰，适合通过OGSM将定性愿景拆解为定量指标与具体动作。",
+      "title": "OGSM Mapping",
+      "description": "This case is well suited to OGSM because the growth ambition is already visible. The real need is to translate that ambition into actions, measures, and operating ownership.",
       "highlights": [
         {
-          "label": "目的（Objective）",
-          "text": "大量增加智慧建筑能效“订阅服务”"
+          "label": "Objective",
+          "text": "Scale the smart-building energy-efficiency subscription business"
         },
         {
-          "label": "目标（Goal）",
-          "text": "签订不少于60个项目；第一季度签约额突破3000万元"
+          "label": "Goal",
+          "text": "At least 60 signed projects; RMB 30 million signed value in Q1"
         },
         {
-          "label": "策略（Strategy）",
-          "text": "主力推进长订阅模式（大项目>1000万）；通过渠道开拓加速业务增长"
+          "label": "Strategy",
+          "text": "Prioritize large long-term subscription deals; accelerate growth through channel expansion"
         },
         {
-          "label": "衡量（Measure）",
-          "text": "长订阅项目占比 > 50%；渠道签约占比达到 40%"
+          "label": "Measure",
+          "text": "Long-term subscription mix above 50%; channel-sourced contracts at 40%"
         }
       ]
     }
@@ -337,36 +337,36 @@
   "sourcePrompt": {
     "prompt_module": "Interview_to_OGSM_Extractor",
     "input_context": {
-      "case_reference": "jm智慧节能项目",
-      "document_type": "访谈纪要",
+      "case_reference": "JM smart energy-efficiency program",
+      "document_type": "Interview notes",
       "framework_focus": "OGSM"
     },
     "extraction_logic": {
       "semantic_mapping": {
         "Objective_Clues": [
-          "老板提到的‘一定要实现’的事情",
-          "目前最头疼、必须在今年扭转的局面",
-          "业务转型的终点描述"
+          "What leadership says absolutely must be achieved",
+          "The business situation that must be turned around this year",
+          "The end-state description of the business shift"
         ],
         "Goal_Clues": [
-          "明确的金额数字",
-          "市场占有率或排名要求",
-          "利润率或成本控制红线"
+          "Specific revenue or volume numbers",
+          "Share, ranking, or coverage requirements",
+          "Margin or cost-control thresholds"
         ],
         "Strategy_Clues": [
-          "‘我们要通过...来做’的表述",
-          "针对痛点提出的具体改进手段",
-          "资源投入的重点方向（如渠道、研发、人）"
+          "Statements framed as \"we will do this by...\"",
+          "Specific improvement moves proposed for current pain points",
+          "Priority directions for resource investment such as channels, product, or talent"
         ],
         "Measure_Clues": [
-          "‘如何判断这事成了’的描述",
-          "阶段性的检查点",
-          "具体的行为频次（如每周拜访次数）"
+          "How the team will know the move is working",
+          "Stage-gate checkpoints",
+          "Specific operating frequencies such as weekly visit cadence"
         ]
       },
       "pain_point_analysis": {
         "method": "Root Cause Linking",
-        "required_output": "将访谈中的吐槽（如‘交付脱节’）自动映射为策略方向（如‘标准化交付体系建设’）"
+        "required_output": "Map complaints in the interview such as delivery disconnects into strategy directions such as standardized delivery-system design."
       }
     },
     "output_requirement": {

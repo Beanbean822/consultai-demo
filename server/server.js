@@ -11,16 +11,16 @@ const {
 
 const PORT = process.env.PORT || 4174;
 const impactCopy = {
-  High: '高优先级',
-  Medium: '中优先级',
-  Low: '低优先级'
+  High: 'High Priority',
+  Medium: 'Medium Priority',
+  Low: 'Low Priority'
 };
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const sentenceCase = (text = '') => {
   if (!text) return '';
-  return /[。！？]$/.test(text) ? text : `${text}。`;
+  return /[.!?]$/.test(text) ? text : `${text}.`;
 };
 
 const pick = (arr, count) => {
@@ -39,29 +39,29 @@ const randomRotate = (arr) => {
 
 const buildHighLevelFindings = (issues = [], project = {}) => {
   const titles = issues.map((issue) => issue.title || '');
-  const hasGrowth = titles.some((title) => /增长|订阅|收入|渠道/.test(title));
-  const hasOps = titles.some((title) => /交付|流程|人才|培养/.test(title));
-  const hasIncentive = titles.some((title) => /激励|绩效|业绩/.test(title));
+  const hasGrowth = titles.some((title) => /growth|subscription|revenue|channel/i.test(title));
+  const hasOps = titles.some((title) => /delivery|process|talent|ramp|role/i.test(title));
+  const hasIncentive = titles.some((title) => /incentive|performance|compensation|outcome/i.test(title));
   const findings = [];
 
   if (hasGrowth) {
     findings.push(
-      `${project.topic || '当前项目'}的增长目标已经明确，但从签约、渠道到确认收入的执行链路仍缺少统一拆解，短期需要先建立季度节奏与责任分工。`
+      `${project.topic || 'The current project'} has a clear growth ambition, but the path from signed deals and channel activation to recognized revenue is still not translated into a disciplined operating cadence.`
     );
   }
   if (hasOps) {
     findings.push(
-      '交付流程标准化、跨部门协同与人才培养节奏未形成稳定支撑，说明组织能力尚未完全匹配业务扩张目标。'
+      'Delivery standardization, cross-functional coordination, and talent ramp-up are not yet strong enough to support the planned scale-up.'
     );
   }
   if (hasIncentive) {
     findings.push(
-      '激励机制与经营目标之间缺少直接联动，导致团队行为难以围绕关键结果集中发力。'
+      'Incentive and performance mechanisms are not tightly linked to business outcomes, which weakens execution focus around the most important results.'
     );
   }
   if (!findings.length) {
     findings.push(
-      '当前已选问题显示，项目的主要挑战集中在目标拆解不充分、执行协同不足，以及缺少可持续跟踪的经营节奏。'
+      'The selected issues suggest that the main challenge is turning strategy into coordinated execution with clear ownership and review rhythm.'
     );
   }
 
@@ -96,7 +96,7 @@ const buildAnalysis = ({ project = sampleProject, issues = [], notes = '', sampl
   const effectiveProject = project || demoData.sampleProject;
   const derivedQuestions = demoData.keyQuestions.map((item, index) => ({
     id: item.id || `kq-${index + 1}`,
-    title: item.title || item.question || `关键问题 ${index + 1}`,
+    title: item.title || item.question || `Key Issue ${index + 1}`,
     description: item.strategyHint || item.description || item.question || '',
     impact: item.impact || 'Medium'
   }));
@@ -106,21 +106,21 @@ const buildAnalysis = ({ project = sampleProject, issues = [], notes = '', sampl
       ? derivedQuestions.slice(0, 4)
       : [
           {
-            title: '缺少统一的增长北极星',
-            description: '收入、续费、服务等 KPI 未对齐，导致战役无法排优先级。',
+            title: 'The growth north star is not yet unified',
+            description: 'Revenue, renewal, and service KPIs are not aligned, which makes prioritization inconsistent.',
             impact: 'High'
           }
         ];
   const analysisTemplate = demoData.analysisTemplate || {};
   const summary = [
     ...(sampleMode ? analysisTemplate.summary || [] : []),
-    `${effectiveProject.projectName} 针对 ${effectiveProject.topic} 的目标是 ${effectiveProject.goal}`,
+    `${effectiveProject.projectName} focuses on ${effectiveProject.topic} with the objective of ${effectiveProject.goal}`,
     ...(sampleMode && demoData.materials.backgroundSummary
-      ? [`材料背景显示：${demoData.materials.backgroundSummary}`]
+      ? [`Background signal from the case materials: ${demoData.materials.backgroundSummary}`]
       : []),
-    `AI 根据上传资料识别出 ${issues.length || primaryIssues.length} 个关键阻碍，并与顾问共创优先级。`,
-    '工作笔记显示客户在“执行节奏”和“流程协同”上诉求最强，因此建议以 30-60-90 天节奏落地。',
-    '以下建议聚焦 90 天内可落地的动作，并预留与真实 API 对接的空间。'
+    `AI extracted ${issues.length || primaryIssues.length} priority issues from the uploaded materials and prepared them for consultant review.`,
+    'Working notes suggest the strongest client demand centers on execution cadence and cross-functional coordination, so the immediate recommendation is a 30-60-90 day operating rhythm.',
+    'The actions below focus on moves that are practical within the next 90 days and can later be linked to a real API workflow.'
   ];
 
   const findings = buildHighLevelFindings(primaryIssues, effectiveProject);
@@ -137,11 +137,11 @@ const buildAnalysis = ({ project = sampleProject, issues = [], notes = '', sampl
         .slice(0, 4)
     : null;
   const frameworkDetails = {
-    title: '框架说明',
+    title: 'Framework Note',
     description:
       effectiveProject.framework === 'ogsm'
-        ? '本案例使用 OGSM，是因为项目已经具备明确增长目标，关键任务不是重新定义方向，而是把目标拆解为可执行的策略动作与衡量指标。OGSM 可以把业务目标、组织动作和跟踪指标放在同一结构中，便于从问题审核直接过渡到执行方案。'
-        : frameworkMeta?.description || '当前所选框架的简要说明。',
+        ? 'OGSM is used here because the growth ambition is already clear. The real task is to convert that ambition into executable actions, measures, and operating ownership. OGSM keeps objectives, strategies, and review metrics in one structure so issue review can flow directly into execution planning.'
+        : frameworkMeta?.description || 'Short note for the selected framework.',
     highlights:
       (sampleMode ? analysisTemplate.frameworkDetails?.highlights : null) ||
       derivedHighlights ||

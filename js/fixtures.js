@@ -1,157 +1,158 @@
 export const frameworkOptions = [
   {
     id: 'swot',
-    name: 'SWOT 战略扫描',
-    description: '适合快速识别业务的优势、短板、机会与风险。'
+    name: 'SWOT Scan',
+    description: 'Best for quickly identifying strengths, weaknesses, opportunities, and risks.'
   },
   {
     id: 'ogsm',
-    name: 'OGSM 战略解码',
-    description: '适合把目标拆解为目标、策略和衡量指标。'
+    name: 'OGSM Mapping',
+    description: 'Best for breaking objectives into goals, strategies, and measures.'
   },
   {
     id: 'process',
-    name: '流程审计（Process Audit）',
-    description: '适合发现流程堵点、协作断点和效率问题。'
+    name: 'Process Audit',
+    description: 'Best for identifying process bottlenecks, collaboration gaps, and efficiency issues.'
   },
   {
     id: 'valuechain',
-    name: '价值链诊断（Value Chain Pulse）',
-    description: '适合从端到端视角评估价值链表现与协同问题。'
+    name: 'Value Chain Pulse',
+    description: 'Best for evaluating end-to-end value-chain performance and coordination issues.'
   }
 ];
 
 export const sampleProject = {
-  projectName: 'jm公司中央空调智慧节能项目',
-  topic: 'jm公司中央空调智慧节能项目与订阅业务转型',
-  goal: '解决战略目标与执行路径脱节、大客户销售能力不足、交付效率低下以及激励机制不匹配的问题。',
+  projectName: 'JM Smart Building Energy Efficiency Program',
+  topic: 'JM Subscription-Service Growth and Operating Model Shift',
+  goal: 'Close the gap between strategic ambition and execution by strengthening enterprise sales capability, delivery efficiency, and incentive alignment.',
   framework: 'ogsm'
 };
 
 export const sampleDocuments = [
-  'AI 访谈转 OGSM 策略提炼.docx',
-  'OGSM模块结合各方面客户信息和方....docx'
+  'Interview-to-OGSM Strategy Extraction.docx',
+  'JM OGSM Integrated Case Pack.docx'
 ];
 
 export const issueLibrary = {
   swot: [
     {
       id: 'swot-1',
-      title: '市场定位模糊导致销售漏斗瓶颈',
+      title: 'The value proposition is not differentiated enough to unlock enterprise demand',
       impact: 'High',
-      description: '同类机器人厂商打法一致，客户无法区分价值主张，30% 线索被竞品抢走。'
+      description: 'Clients see limited differentiation versus alternative energy-saving offers, which weakens conversion in strategic accounts.'
     },
     {
       id: 'swot-2',
-      title: '服务交付成本高',
+      title: 'Service delivery cost remains too high',
       impact: 'Medium',
-      description: '维保团队出勤效率低，每单成本高出行业基准 18%。'
+      description: 'Field efficiency is below benchmark, pushing service cost per project above target levels.'
     },
     {
       id: 'swot-3',
-      title: '渠道伙伴关系脆弱',
+      title: 'The partner ecosystem is not yet resilient',
       impact: 'Medium',
-      description: '缺少激励模型与共创机制，新行业伙伴拓展缓慢。'
+      description: 'The current partner model lacks incentive alignment and a repeatable co-sell motion.'
     },
     {
       id: 'swot-4',
-      title: '硬件依赖单一供应商',
+      title: 'Critical capabilities still rely on a narrow supplier base',
       impact: 'High',
-      description: '关键零部件只有一家合格供应商，供应中断风险高。'
+      description: 'Concentration of key technical dependencies increases operational and scaling risk.'
     }
   ],
   ogsm: [
     {
       id: 'ogsm-1',
-      title: 'Objectives 未与财年 North Star 对齐',
+      title: 'Subscription-service growth targets lack executable levers',
       impact: 'High',
-      description: '前线 KPI 只衡量签单量，未覆盖续费与服务收入，导致策略分散。'
+      description: 'The annual growth ambition exists, but quarterly pacing, ownership, and execution mechanisms are still unclear.'
     },
     {
       id: 'ogsm-2',
-      title: 'GTM 关键战役不清晰',
+      title: 'The path for building channels in core regions remains unclear',
       impact: 'High',
-      description: '没有“必须打赢的仗”列表，项目优先级取决于个人偏好。'
+      description: 'Core market priorities are known, but partner qualification, activation, and regional playbooks are not fully defined.'
     },
     {
       id: 'ogsm-3',
-      title: '部门 KPI 缺少量化追踪',
+      title: 'Delivery efficiency and talent development are not strong enough to support scale',
       impact: 'Medium',
-      description: 'OKR 模板存在但是未更新，季度复盘无法定位责任人。'
+      description: 'Delivery slippage and slow talent ramp-up suggest the organization is not yet ready for the targeted scale-up.'
     },
     {
       id: 'ogsm-4',
-      title: '管理节奏与共创会议缺失',
-      impact: 'Low',
-      description: '战略共创会只开过一次，后续没有跟踪会议。'
+      title: 'Incentives are not tightly linked to business outcomes',
+      impact: 'Medium',
+      description: 'Current bonus and equity mechanisms do not sufficiently reinforce subscription growth and recognized revenue targets.'
     }
   ],
   process: [
     {
       id: 'proc-1',
-      title: 'L2-L3 流程角色模糊',
+      title: 'Role ownership across the delivery flow is unclear',
       impact: 'High',
-      description: '交付流程泳道图缺少责任定义，交接时间被动延长。'
+      description: 'Handoffs stretch because responsibilities are not fully defined across major delivery stages.'
     },
     {
       id: 'proc-2',
-      title: 'SOP 未和 KPI 绑定',
+      title: 'Standard operating routines are not linked to performance',
       impact: 'Medium',
-      description: '流程执行检查清单不与绩效挂钩，合规性下降。'
+      description: 'Execution checklists exist, but they are not reinforced through performance management.'
     },
     {
       id: 'proc-3',
-      title: '工具链碎片化',
+      title: 'The tool chain is fragmented across teams',
       impact: 'Medium',
-      description: '不同团队使用独立表格，缺乏单一数据源。'
+      description: 'Teams still rely on separate files and local trackers instead of a shared operating view.'
     }
   ],
   valuechain: [
     {
       id: 'vc-1',
-      title: '薪酬激励与战略脱节',
+      title: 'Compensation design still reflects the old business model',
       impact: 'High',
-      description: '薪酬方案仍围绕硬件销售，服务营收缺少激励。'
+      description: 'The incentive model still overweights traditional project wins and underweights subscription economics.'
     },
     {
       id: 'vc-2',
-      title: '人才盘点没有形成 Success Profile',
+      title: 'Talent review has not produced a clear success profile',
       impact: 'Medium',
-      description: '核心岗位能力模型缺失，招聘与培养方向不明。'
+      description: 'Core roles still lack a shared capability model to guide hiring and development.'
     },
     {
       id: 'vc-3',
-      title: '绩效复盘机制弱',
+      title: 'Performance review routines are still weak',
       impact: 'Medium',
-      description: '红绿灯仪表盘停留在概念，没有数据支撑复盘。'
+      description: 'Management dashboards remain conceptual and do not yet drive disciplined business review.'
     }
   ]
 };
 
 export const riskTemplates = [
   {
-    id: 'ops',
-    title: '执行节奏失衡',
-    badge: 'badge-medium',
-    copy: '流程梳理后如未配套 KPI/激励，改进计划会流于形式。'
-  },
-  {
-    id: 'data',
-    title: '数据可信度',
+    id: 'strategy',
+    title: 'Strategy and execution remain disconnected',
     badge: 'badge-high',
-    copy: '模拟数据可用于演示，但上线前必须梳理合规与版权。'
+    copy: 'If annual targets are defined without owners, cadence, and review discipline, OGSM will remain a planning artifact rather than an operating system.'
   },
   {
-    id: 'people',
-    title: '组织变更疲劳',
+    id: 'delivery',
+    title: 'Channel growth could outpace delivery capability',
+    badge: 'badge-medium',
+    copy: 'If market expansion accelerates before delivery standards are stabilized, client experience and renewal conversion will suffer.'
+  },
+  {
+    id: 'incentive',
+    title: 'The incentive system may fail to support the business shift',
     badge: 'badge-low',
-    copy: '多次计划变更导致团队厌倦，需要节奏化沟通。'
+    copy: 'If bonus and equity design continue to reflect the old model, teams will not fully commit to the subscription transition.'
   }
 ];
 
 export const recommendationPool = [
-  '建立 OGSM 共创 + 双周 Rhythm 会议，将 North Star 级联到部门 KPI。',
-  '搭建流程泳道 + 权责矩阵，用于上线后的培训与审计。',
-  '发布关键问题行动清单，联合产品与销售制定 6 周冲刺。',
-  '以 PDF/PPT 模板输出标准交付件，并链接真实数据源。'
+  'Build a single OGSM master plan that breaks 60 subscription contracts, RMB 40 million recognized revenue, and margin targets into quarterly operating reviews.',
+  'Stand up a dedicated enterprise-sales motion and pilot a strategic channel-partner model first in the top-tier cities.',
+  'Stabilize delivery by defining standard work, role ownership, and review checkpoints for the major implementation stages.',
+  'Tie bonus pools directly to recognized revenue, on-time delivery milestones, and completion of quarterly performance conversations.',
+  'Use an employee-journey map and capability-building path to shorten new-hire ramp time and strengthen organization capacity.'
 ];

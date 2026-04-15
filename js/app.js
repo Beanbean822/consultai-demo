@@ -1,7 +1,7 @@
 import { DemoAPI } from './services.js';
 
 const state = {
-  language: 'zh',
+  language: 'en',
   quickStart: null,
   project: null,
   caseData: null,
@@ -13,7 +13,7 @@ const state = {
   parsing: {
     running: false,
     completed: false,
-    logs: ['等待材料上传或载入样例材料。']
+    logs: ['Waiting for file upload or sample materials.']
   },
   issues: [],
   selectedIssueIds: [],
@@ -534,21 +534,21 @@ const buildResultFindings = (issues = [], project = {}) => {
   const titles = issues.map((issue) => issue.title || '');
   const findings = [];
 
-  if (titles.some((title) => /增长|订阅|收入|渠道/.test(title))) {
+  if (titles.some((title) => /growth|subscription|revenue|channel/i.test(title))) {
     findings.push(
       state.language === 'en'
         ? `${project.topic || 'The current project'} has a clear growth ambition, but the path from channel activation to recognized revenue is still not translated into an executable operating cadence.`
         : `${project.topic || '当前项目'}的核心矛盾不在目标缺失，而在增长目标尚未被拆解为季度节奏、渠道动作与收入兑现路径。`
     );
   }
-  if (titles.some((title) => /交付|流程|人才|培养/.test(title))) {
+  if (titles.some((title) => /delivery|process|talent|ramp|role/i.test(title))) {
     findings.push(
       state.language === 'en'
         ? 'Delivery process, cross-functional coordination, and talent ramp-up are not yet stable enough to support the targeted scale-up.'
         : '交付流程、协作机制与人才培养节奏未形成稳定支撑，组织能力与业务扩张目标之间存在明显缺口。'
     );
   }
-  if (titles.some((title) => /激励|绩效|业绩/.test(title))) {
+  if (titles.some((title) => /incentive|performance|compensation|outcome/i.test(title))) {
     findings.push(
       state.language === 'en'
         ? 'Incentive and performance mechanisms are not sufficiently tied to business outcomes, weakening sustained alignment around growth and delivery quality.'
@@ -594,21 +594,13 @@ const formatReportDate = () => {
 const buildReportHeaderCopy = (project = {}, frameworkMeta) => {
   const isEn = state.language === 'en';
   const frameworkName = frameworkMeta?.name || project.framework || 'OGSM';
+  const reportFrameworkName = /ogsm/i.test(frameworkName) ? 'OGSM' : frameworkName;
   const projectName = project.projectName || '';
-  const topic = project.topic || '';
-
-  if (!isEn && /jm/i.test(projectName || topic)) {
-    return {
-      label: 'ConsultAI 项目报告',
-      title: 'jm公司智慧建筑节能业务 OGSM 分析报告',
-      subtitle: '基于 OGSM 战略解码，对增长目标、渠道建设、交付能力与激励机制进行结构化诊断。'
-    };
-  }
 
   if (isEn) {
     return {
       label: 'ConsultAI Project Report',
-      title: `${projectName || 'Project'} ${frameworkName} Analysis Report`,
+      title: `${projectName || 'Project'} ${reportFrameworkName} Analysis Report`,
       subtitle:
         frameworkName.toLowerCase().includes('ogsm')
           ? 'Structured diagnosis of growth targets, channel development, delivery capability, and incentive design based on OGSM strategic decoding.'
@@ -618,7 +610,7 @@ const buildReportHeaderCopy = (project = {}, frameworkMeta) => {
 
   return {
     label: 'ConsultAI 项目报告',
-    title: `${projectName || '项目'} ${frameworkName} 分析报告`,
+    title: `${projectName || '项目'} ${reportFrameworkName} 分析报告`,
     subtitle:
       frameworkName.includes('OGSM')
         ? '基于 OGSM 战略解码，对增长目标、渠道建设、交付能力与激励机制进行结构化诊断。'
@@ -852,7 +844,9 @@ const renderCaseContext = () => {
       state.setupSource === 'sample'
         ? brief.selectionReason || t('common.noFrameworkReason')
         : selectedFramework
-          ? `已选择 ${selectedFramework.name}。${selectedFramework.description}`
+          ? (state.language === 'en'
+            ? `Selected ${selectedFramework.name}. ${selectedFramework.description}`
+            : `已选择 ${selectedFramework.name}。${selectedFramework.description}`)
           : (state.language === 'en'
             ? 'Select a framework first to generate the corresponding analysis logic.'
             : '请先选择分析框架，以生成对应的分析逻辑。');

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ConsultAI 演示站</title>
+    <title>ConsultAI Demo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,22 +16,22 @@
     <header class="site-header">
       <div class="brand">
         <span class="logo">ConsultAI</span>
-        <span class="tagline" data-i18n="brand.tagline">人机协同咨询工作流</span>
+        <span class="tagline" data-i18n="brand.tagline">Human + AI Consulting Workflow</span>
       </div>
       <nav class="primary-nav">
-        <button data-step-link="landing" data-i18n="nav.landing">首页</button>
-        <button data-step-link="setup" data-i18n="nav.setup">项目设定</button>
-        <button data-step-link="upload" data-i18n="nav.upload">上传材料</button>
-        <button data-step-link="pain" data-i18n="nav.pain">关键问题</button>
-        <button data-step-link="results" data-i18n="nav.results">分析结果</button>
+        <button data-step-link="landing" data-i18n="nav.landing">Home</button>
+        <button data-step-link="setup" data-i18n="nav.setup">Setup</button>
+        <button data-step-link="upload" data-i18n="nav.upload">Materials</button>
+        <button data-step-link="pain" data-i18n="nav.pain">Key Issues</button>
+        <button data-step-link="results" data-i18n="nav.results">Results</button>
       </nav>
       <div class="header-tools">
         <div class="language-toggle" aria-label="Language toggle" data-i18n-aria-label="header.languageToggle">
-          <button type="button" class="lang-btn active" data-lang="zh">中文</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="zh">中文</button>
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
         </div>
-        <button class="ghost-btn" id="recordScriptBtn" title="复制演示讲稿" data-i18n-title="buttons.script" data-i18n="buttons.script">
-          演示讲稿
+        <button class="ghost-btn" id="recordScriptBtn" title="Copy demo script" data-i18n-title="buttons.script" data-i18n="buttons.script">
+          Demo Script
         </button>
       </div>
     </header>
@@ -40,23 +40,23 @@
       <section class="progress" aria-label="演示流程进度" data-i18n-aria-label="progress.aria">
         <div class="progress-step" data-step="landing">
           <span>1</span>
-          <label data-i18n="progress.landing">首页</label>
+          <label data-i18n="progress.landing">Home</label>
         </div>
         <div class="progress-step" data-step="setup">
           <span>2</span>
-          <label data-i18n="progress.setup">项目设定</label>
+          <label data-i18n="progress.setup">Setup</label>
         </div>
         <div class="progress-step" data-step="upload">
           <span>3</span>
-          <label data-i18n="progress.upload">上传材料</label>
+          <label data-i18n="progress.upload">Materials</label>
         </div>
         <div class="progress-step" data-step="pain">
           <span>4</span>
-          <label data-i18n="progress.pain">关键问题</label>
+          <label data-i18n="progress.pain">Key Issues</label>
         </div>
         <div class="progress-step" data-step="results">
           <span>5</span>
-          <label data-i18n="progress.results">分析结果</label>
+          <label data-i18n="progress.results">Results</label>
         </div>
       </section>
 
@@ -365,9 +365,9 @@
             <article class="wide report-header-card">
               <div class="report-header-top">
                 <div>
-                  <p class="report-kicker" id="reportLabel" data-i18n="results.reportKicker">ConsultAI 项目报告</p>
-                  <h3 class="report-main-title" id="reportMainTitle">jm公司智慧建筑节能业务 OGSM 分析报告</h3>
-                  <p class="report-subtitle" id="reportSubtitle">基于 OGSM 战略解码，对增长目标、渠道建设、交付能力与激励机制进行结构化诊断。</p>
+                  <p class="report-kicker" id="reportLabel" data-i18n="results.reportKicker">ConsultAI Project Report</p>
+                  <h3 class="report-main-title" id="reportMainTitle">JM Smart Building Energy Efficiency Program OGSM Analysis Report</h3>
+                  <p class="report-subtitle" id="reportSubtitle">Structured diagnosis of growth targets, channel development, delivery capability, and incentive design based on OGSM strategic decoding.</p>
                 </div>
                 <p class="report-prepared">Prepared by ConsultAI</p>
               </div>
@@ -506,11 +506,11 @@
     </template>
 
     <template id="presenterScript">
-      首页：介绍 ConsultAI 的定位与人机协同方式，展示流程说明与安全边界。
-      项目设定：输入项目名称、主题、目标和分析框架，可一键载入样例项目。
-      上传材料：拖入文件或载入样例材料，说明数据仍由顾问掌控。
-      关键问题：展示 AI 识别的问题，并由顾问勾选、排序、补充。
-      分析结果：输出执行摘要、关键发现、框架分析、风险提示与建议动作，并说明未来可接真实 API。
+      Home: introduce ConsultAI, the human + AI workflow, the process, and the privacy boundary.
+      Setup: define the project name, topic, goal, and framework, or load the sample project in one click.
+      Materials: upload files or load sample materials to show that source data stays under consultant control.
+      Key Issues: review AI-extracted issues, then let the consultant select, reorder, and refine priorities.
+      Results: present the executive summary, key findings, framework logic, risks, and recommended actions, with a path to a real API later.
     </template>
 
     <script type="module" src="./js/app.js"></script>
