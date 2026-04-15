@@ -22,16 +22,15 @@ export const frameworkOptions = [
 ];
 
 export const sampleProject = {
-  projectName: 'Alpha Robotics 服务增长优化项目',
-  topic: 'Alpha Robotics 服务业务',
-  goal: '明确服务业务的增长引擎，并形成未来 12 个月的执行型 OGSM 路线图。',
+  projectName: 'jm公司中央空调智慧节能项目',
+  topic: 'jm公司中央空调智慧节能项目与订阅业务转型',
+  goal: '解决战略目标与执行路径脱节、大客户销售能力不足、交付效率低下以及激励机制不匹配的问题。',
   framework: 'ogsm'
 };
 
 export const sampleDocuments = [
-  'Alpha_战略复盘.pdf',
-  '第一季度访谈纪要.docx',
-  '客户反馈汇总.xlsx'
+  'AI 访谈转 OGSM 策略提炼.docx',
+  'OGSM模块结合各方面客户信息和方....docx'
 ];
 
 export const issueLibrary = {
