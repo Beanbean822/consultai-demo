@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConsultAI 演示站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="logo">ConsultAI</span>
+        <span class="tagline" data-i18n="brand.tagline">人机协同咨询工作流</span>
+      </div>
+      <nav class="primary-nav">
+        <button data-step-link="landing" data-i18n="nav.landing">首页</button>
+        <button data-step-link="setup" data-i18n="nav.setup">项目设定</button>
+        <button data-step-link="upload" data-i18n="nav.upload">上传材料</button>
+        <button data-step-link="pain" data-i18n="nav.pain">关键问题</button>
+        <button data-step-link="results" data-i18n="nav.results">分析结果</button>
+      </nav>
+      <div class="header-tools">
+        <div class="language-toggle" aria-label="Language toggle" data-i18n-aria-label="header.languageToggle">
+          <button type="button" class="lang-btn active" data-lang="zh">中文</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="ghost-btn" id="recordScriptBtn" title="复制演示讲稿" data-i18n-title="buttons.script" data-i18n="buttons.script">
+          演示讲稿
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="progress" aria-label="演示流程进度" data-i18n-aria-label="progress.aria">
+        <div class="progress-step" data-step="landing">
+          <span>1</span>
+          <label data-i18n="progress.landing">首页</label>
+        </div>
+        <div class="progress-step" data-step="setup">
+          <span>2</span>
+          <label data-i18n="progress.setup">项目设定</label>
+        </div>
+        <div class="progress-step" data-step="upload">
+          <span>3</span>
+          <label data-i18n="progress.upload">上传材料</label>
+        </div>
+        <div class="progress-step" data-step="pain">
+          <span>4</span>
+          <label data-i18n="progress.pain">关键问题</label>
+        </div>
+        <div class="progress-step" data-step="results">
+          <span>5</span>
+          <label data-i18n="progress.results">分析结果</label>
+        </div>
+      </section>
+
+      <section class="demo-section" data-section="landing">
+        <div class="grid two-col balanced hero-layout">
+          <div class="hero-col">
+            <p class="eyebrow" data-i18n="landing.eyebrow">产品介绍</p>
+            <h1 data-i18n="landing.title">ConsultAI：把复杂业务问题快速整理成清晰可执行的分析</h1>
+            <p class="lead zh-copy" data-i18n="landing.lead">
+              ConsultAI 是一个人机协同的咨询工作流工具：由人定义项目边界与判断标准，由 AI 协助整理材料、识别问题、组织结构，并输出可继续打磨的分析初稿。
+            </p>
+            <div class="feature-cards">
+              <article>
+                <h3 data-i18n="landing.feature.1.title">智能发现</h3>
+                <p data-i18n="landing.feature.1.body">模式化模板与 AI 提示，帮助快速定位问题与资料。</p>
+              </article>
+              <article>
+                <h3 data-i18n="landing.feature.2.title">引导式框架</h3>
+                <p data-i18n="landing.feature.2.body">内置咨询框架，帮助形成结构化分析。</p>
+              </article>
+              <article>
+                <h3 data-i18n="landing.feature.3.title">AI 协同交付</h3>
+                <p data-i18n="landing.feature.3.body">基于人的判断，生成摘要、风险与建议。</p>
+              </article>
+            </div>
+            <div class="cta-row">
+              <button class="primary" id="startDemoBtn" data-i18n="buttons.startDemo">开始演示</button>
+              <button class="secondary" id="useSampleLandingBtn" data-i18n="buttons.useSampleProject">使用样例项目</button>
+            </div>
+          </div>
+          <div class="hero-col">
+            <div class="card how-it-works">
+              <h2 data-i18n="landing.howItWorks">ConsultAI 如何工作</h2>
+              <p class="lead card-lead" data-i18n="landing.howLead">
+                人机协同不是替代判断，而是把顾问的工作流变得更快、更稳定，也更容易沉淀为可复用方法。
+              </p>
+              <div class="how-grid">
+                <div>
+                  <h3 data-i18n="landing.human.title">人负责</h3>
+                  <ul class="plain-list">
+                    <li data-i18n="landing.human.1">定义项目背景</li>
+                    <li data-i18n="landing.human.2">选择分析框架</li>
+                    <li data-i18n="landing.human.3">确认重点问题</li>
+                    <li data-i18n="landing.human.4">修正结论表达</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 data-i18n="landing.ai.title">AI 负责</h3>
+                  <ul class="plain-list">
+                    <li data-i18n="landing.ai.1">总结上传材料</li>
+                    <li data-i18n="landing.ai.2">生成问题列表</li>
+                    <li data-i18n="landing.ai.3">组织分析结构</li>
+                    <li data-i18n="landing.ai.4">输出分析初稿</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mini-flow">
+                <span data-i18n="landing.flow.1">项目设定</span>
+                <span data-i18n="landing.flow.2">材料整理</span>
+                <span data-i18n="landing.flow.3">问题确认</span>
+                <span data-i18n="landing.flow.4">生成初稿</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="landing-meta">
+          <div class="card meta-card">
+            <h3 data-i18n="landing.workflow.title">流程说明</h3>
+            <ol class="workflow-list">
+              <li data-i18n="landing.workflow.1">定义项目范围</li>
+              <li data-i18n="landing.workflow.2">上传背景材料</li>
+              <li data-i18n="landing.workflow.3">审核 AI 识别的问题</li>
+              <li data-i18n="landing.workflow.4">生成人机协同分析</li>
+              <li data-i18n="landing.workflow.5">输出结构化结果</li>
+            </ol>
+          </div>
+          <div class="card meta-card">
+            <h3 data-i18n="landing.privacy.title">隐私与安全</h3>
+            <ul class="plain-list">
+              <li data-i18n="landing.privacy.1">项目级隔离：每次分析按项目独立处理，避免不同客户材料混用。</li>
+              <li data-i18n="landing.privacy.2">最小化暴露：仅处理当前流程所需内容，默认以样例项目 / 模拟数据演示。</li>
+              <li data-i18n="landing.privacy.3">不用于训练：上传材料仅用于当前分析流程，不作为模型训练数据。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section" data-section="setup" hidden>
+        <header class="section-header">
+          <div>
+            <p class="eyebrow" data-i18n="step.2">步骤 2</p>
+            <h2 data-i18n="setup.title">定义项目边界</h2>
+            <p data-i18n="setup.subtitle">让客户输入核心信息或一键载入样例，后续所有步骤都会引用。</p>
+          </div>
+          <div class="section-actions">
+            <button class="ghost-btn" id="loadSampleProject" data-i18n="buttons.loadSampleProject">载入样例项目</button>
+            <button class="ghost-btn" id="backToLanding" data-i18n="buttons.backHome">返回首页</button>
+          </div>
+        </header>
+        <form id="setupForm" class="card wide">
+          <div class="form-grid">
+            <label>
+              <span data-i18n="setup.label.projectName">项目名称</span>
+              <input type="text" name="projectName" placeholder="请输入项目名称" data-i18n-placeholder="setup.placeholder.projectName" required />
+            </label>
+            <label>
+              <span data-i18n="setup.label.topic">公司 / 主题</span>
+              <input type="text" name="topic" placeholder="请输入公司名称或分析主题" data-i18n-placeholder="setup.placeholder.topic" required />
+            </label>
+            <label>
+              <span data-i18n="setup.label.industry">行业（可选）</span>
+              <input type="text" name="industry" placeholder="请输入行业或赛道" data-i18n-placeholder="setup.placeholder.industry" />
+            </label>
+            <label>
+              <span data-i18n="setup.label.goal">分析目标（可选）</span>
+              <textarea
+                name="goal"
+                placeholder="请输入本次分析希望解决的问题或达成的结果"
+                data-i18n-placeholder="setup.placeholder.goal"
+                rows="4"
+              ></textarea>
+            </label>
+            <label>
+              <span data-i18n="setup.label.framework">分析框架</span>
+              <select name="framework" id="frameworkSelect" required></select>
+            </label>
+            <label class="full-span">
+              <span data-i18n="setup.label.background">项目背景补充（可选）</span>
+              <textarea
+                name="backgroundContext"
+                placeholder="可补充公司当前阶段、行业背景、客户现状或本次案例上下文"
+                data-i18n-placeholder="setup.placeholder.background"
+                rows="4"
+              ></textarea>
+            </label>
+          </div>
+          <div class="framework-info" id="setupDetailGrid" hidden>
+            <div class="framework-description">
+              <h3 data-i18n="setup.frameworkIntro">框架简介</h3>
+              <p id="frameworkDescription" data-i18n="common.frameworkDescription">请选择框架查看简短说明。</p>
+            </div>
+            <div class="project-brief card subtle" id="projectBrief">
+              <h3 data-i18n="setup.projectBrief">项目摘要</h3>
+              <p class="brief-topic" data-i18n="setup.brief.topicDefault">主题：未填写</p>
+              <p class="brief-goal" data-i18n="setup.brief.goalDefault">目标：未填写</p>
+            </div>
+          </div>
+          <div class="setup-context" id="setupContext" hidden>
+            <article class="card subtle">
+              <h3 data-i18n="setup.caseOverview">案例概览</h3>
+              <p class="help-text" id="caseIndustryText" data-i18n="setup.caseIndustryDefault">行业：未填写</p>
+              <p id="caseDescriptionText" data-i18n="setup.caseDescriptionDefault">请先填写项目字段，或点击“载入样例项目”。</p>
+            </article>
+            <article class="card subtle">
+              <h3 data-i18n="setup.frameworkReason">框架选择理由</h3>
+              <p id="selectionReasonText" data-i18n="common.sampleRequired">请先选择分析框架，或点击“载入样例项目”。</p>
+            </article>
+          </div>
+          <footer class="form-footer">
+            <p class="help-text" data-i18n="setup.footerNote">这些字段将传递给 AI 引擎，也用于生成摘要。</p>
+            <div>
+              <button type="submit" class="primary" data-i18n="buttons.saveContinue">保存并继续</button>
+            </div>
+          </footer>
+        </form>
+      </section>
+
+      <section class="demo-section" data-section="upload" hidden>
+        <header class="section-header">
+          <div>
+            <p class="eyebrow" data-i18n="step.3">步骤 3</p>
+            <h2 data-i18n="upload.title">模拟资料上传</h2>
+            <p data-i18n="upload.subtitle">允许文件上传、文本粘贴或直接载入样例数据。</p>
+          </div>
+          <div class="section-actions">
+            <button class="ghost-btn" id="useSampleDocs" data-i18n="buttons.loadSampleMaterials">载入样例材料</button>
+          </div>
+        </header>
+        <div class="grid two-col">
+          <div class="card">
+            <h3 data-i18n="upload.fileUpload">文件上传</h3>
+            <label class="upload-zone">
+              <input type="file" id="fileInput" multiple />
+              <span data-i18n="upload.dropzone">拖拽文件到这里，或点击选择文件</span>
+            </label>
+            <ul id="fileList" class="file-list"></ul>
+            <div class="uploaded-items">
+              <div class="uploaded-header">
+                <h4 data-i18n="upload.uploadedItems">已上传条目</h4>
+                <span id="uploadedCountBadge">0</span>
+              </div>
+              <ul id="uploadedItemsList"></ul>
+            </div>
+            <div class="sample-materials" id="sampleMaterialsSection" hidden>
+              <div class="uploaded-header">
+                <h4 data-i18n="upload.sampleMaterials">样例材料说明</h4>
+                <span id="sampleMaterialsBadge">0</span>
+              </div>
+              <div id="sampleMaterialsList" class="sample-material-list"></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 data-i18n="upload.notes">补充备注</h3>
+            <textarea
+              id="notesInput"
+              placeholder="粘贴访谈记录、会议纪要或补充说明。"
+              data-i18n-placeholder="upload.placeholder.notes"
+              rows="8"
+            ></textarea>
+            <button class="secondary" id="saveNotesBtn" data-i18n="buttons.saveNotes">保存备注</button>
+          </div>
+        </div>
+        <div class="upload-context">
+          <article class="card subtle">
+            <h3 data-i18n="upload.backgroundSummary">案例背景摘要</h3>
+            <p id="backgroundSummaryText" data-i18n="upload.backgroundPlaceholder">载入样例项目后，这里将展示案例背景摘要。</p>
+          </article>
+          <article class="card subtle" id="observationCard" hidden>
+            <h3 data-i18n="upload.observations">观察纪要</h3>
+            <ul id="observationList" class="plain-list"></ul>
+          </article>
+        </div>
+        <div class="card subtle parse-status-card">
+          <div class="uploaded-header">
+            <h3 data-i18n="upload.parseStatus">解析状态</h3>
+            <span id="parseStatusBadge" data-i18n="common.notStarted">未开始</span>
+          </div>
+          <ul id="parseStatusList" class="plain-list">
+            <li data-i18n="common.waitForMaterials">等待材料上传或载入样例材料。</li>
+          </ul>
+        </div>
+        <footer class="form-footer">
+          <p class="help-text" data-i18n="upload.footerNote">所有内容当前暂存于浏览器本地状态，后续可切换为真实 API。</p>
+          <button id="toPainBtn" class="primary" disabled data-i18n="buttons.startParsing">开始解析</button>
+        </footer>
+      </section>
+
+      <section class="demo-section" data-section="pain" hidden>
+        <header class="section-header">
+          <div>
+            <p class="eyebrow" data-i18n="step.4">步骤 4</p>
+            <h2 data-i18n="pain.title">AI 识别关键问题，顾问确认重点</h2>
+            <p data-i18n="pain.subtitle">
+              勾选、调整或补充关键问题，并通过优先级排序体现人机协同判断。
+            </p>
+          </div>
+          <div class="section-actions">
+            <button id="selectAllIssues" class="ghost-btn" data-i18n="buttons.selectAll">全选</button>
+            <button id="clearIssues" class="ghost-btn" data-i18n="buttons.clear">清空</button>
+          </div>
+        </header>
+        <div class="card subtle pain-context">
+          <h3 data-i18n="pain.contextTitle">问题提炼依据</h3>
+          <p class="help-text" id="painContextIntro" data-i18n="pain.contextIntro">
+            这些问题来自样例材料中的背景摘要、观察纪要与关键问题提炼，可由顾问继续筛选和调整。
+          </p>
+          <ul id="painContextList" class="plain-list"></ul>
+        </div>
+        <div class="issue-summary-strip">
+          <div>
+            <p class="summary-label" data-i18n="pain.summary.selected">已选择</p>
+            <p id="summarySelected" class="summary-value">0</p>
+          </div>
+          <div>
+            <p class="summary-label" data-i18n="pain.summary.high">高优先级</p>
+            <p id="summaryHigh" class="summary-value">0</p>
+          </div>
+          <div>
+            <p class="summary-label" data-i18n="pain.summary.medium">中优先级</p>
+            <p id="summaryMedium" class="summary-value">0</p>
+          </div>
+        </div>
+        <div class="grid three-col" id="issuesGrid"></div>
+        <details class="card inline-form collapse" id="manualIssue">
+          <summary data-i18n="pain.manualAdd">手动补充问题</summary>
+          <form id="manualIssueForm">
+            <input type="text" name="title" placeholder="问题标题" data-i18n-placeholder="pain.placeholder.title" required />
+            <input type="text" name="impact" placeholder="影响程度（高 / 中 / 低）" data-i18n-placeholder="pain.placeholder.impact" required />
+            <textarea name="description" placeholder="问题描述" data-i18n-placeholder="pain.placeholder.description" rows="3" required></textarea>
+            <button type="submit" class="secondary" data-i18n="buttons.addToList">加入列表</button>
+          </form>
+        </details>
+        <footer class="form-footer">
+          <div class="issue-footer-copy">
+            <p class="help-text" id="issueCount" data-i18n="common.issueCountEmpty">暂未选择问题</p>
+            <p class="error-text" id="generationError" hidden></p>
+          </div>
+          <button id="generateAnalysisBtn" class="primary" disabled data-i18n="buttons.generateResults">生成分析结果</button>
+        </footer>
+      </section>
+
+      <section class="demo-section" data-section="results" hidden>
+        <header class="section-header">
+          <div>
+            <p class="eyebrow" data-i18n="step.5">步骤 5</p>
+            <h2 data-i18n="results.title">输出结构化结果，可替换为真实 API</h2>
+            <p data-i18n="results.subtitle">当前演示结果由统一服务层生成，后续接入真实 RAG / LLM 只需替换同一处接口。</p>
+          </div>
+          <div class="section-actions">
+            <button class="ghost-btn" id="restartDemo" data-i18n="buttons.restart">重新开始</button>
+            <button class="secondary" id="downloadPdfBtn" data-i18n="buttons.exportPdf">导出 PDF</button>
+          </div>
+        </header>
+        <div class="results-grid" id="resultsPanel">
+          <div class="results-row report-row">
+            <article class="wide report-header-card">
+              <div class="report-header-top">
+                <div>
+                  <p class="report-kicker" id="reportLabel" data-i18n="results.reportKicker">ConsultAI 项目报告</p>
+                  <h3 class="report-main-title" id="reportMainTitle">jm公司智慧建筑节能业务 OGSM 分析报告</h3>
+                  <p class="report-subtitle" id="reportSubtitle">基于 OGSM 战略解码，对增长目标、渠道建设、交付能力与激励机制进行结构化诊断。</p>
+                </div>
+                <p class="report-prepared">Prepared by ConsultAI</p>
+              </div>
+              <div class="report-meta-grid">
+                <div>
+                  <span class="report-meta-label" data-i18n="results.meta.project">客户 / 项目</span>
+                  <strong id="reportProjectName">-</strong>
+                </div>
+                <div>
+                  <span class="report-meta-label" data-i18n="results.meta.topic">分析主题</span>
+                  <strong id="reportTopic">-</strong>
+                </div>
+                <div>
+                  <span class="report-meta-label" data-i18n="results.meta.framework">分析框架</span>
+                  <strong id="reportFramework">-</strong>
+                </div>
+                <div>
+                  <span class="report-meta-label" data-i18n="results.meta.date">日期</span>
+                  <strong id="reportDate">-</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="results-row conclusion-row">
+            <article class="wide conclusion-card">
+              <div class="conclusion-grid">
+                <div>
+                  <span class="report-meta-label" data-i18n="results.conclusion.core">核心结论</span>
+                  <p id="coreConclusionText">-</p>
+                </div>
+                <div>
+                  <span class="report-meta-label" data-i18n="results.conclusion.priority">建议优先级</span>
+                  <p id="priorityRecommendationText">-</p>
+                </div>
+                <div>
+                  <span class="report-meta-label" data-i18n="results.conclusion.timeline">建议执行周期</span>
+                  <p id="executionTimelineText">-</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="results-row charts-row">
+            <article>
+              <h3 data-i18n="results.priorityChart">问题优先级分布</h3>
+              <div class="priority-chart">
+                <div class="priority-bar-group">
+                  <div class="priority-bar-label">
+                    <span data-i18n="pain.summary.high">高优先级</span>
+                    <strong id="priorityHighCount">0</strong>
+                  </div>
+                  <div class="priority-bar-track">
+                    <div id="priorityHighBar" class="priority-bar high"></div>
+                  </div>
+                </div>
+                <div class="priority-bar-group">
+                  <div class="priority-bar-label">
+                    <span data-i18n="pain.summary.medium">中优先级</span>
+                    <strong id="priorityMediumCount">0</strong>
+                  </div>
+                  <div class="priority-bar-track">
+                    <div id="priorityMediumBar" class="priority-bar medium"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article>
+              <h3 data-i18n="results.ogsmFlow">OGSM 执行路径图</h3>
+              <div id="ogsmFlowPath" class="ogsm-flow-path"></div>
+            </article>
+          </div>
+          <div class="results-row top-row">
+            <article>
+              <h3 data-i18n="results.summary">执行摘要</h3>
+              <ul id="summaryList"></ul>
+            </article>
+            <article>
+              <h3 data-i18n="results.selectedIssues">已选问题概览</h3>
+              <ul id="issuesSnapshot"></ul>
+            </article>
+          </div>
+          <div class="results-row ogsm-row-wrap">
+            <article class="wide">
+              <h3 data-i18n="results.ogsmTable">OGSM 结构表</h3>
+              <div id="ogsmTableBlock" class="ogsm-table-block"></div>
+            </article>
+          </div>
+          <div class="results-row insights-row">
+            <article class="wide">
+              <h3 data-i18n="results.findings">关键发现</h3>
+              <ul id="findingsList"></ul>
+            </article>
+            <article>
+              <h3 data-i18n="results.risks">风险提示</h3>
+              <ul id="risksList" class="risks"></ul>
+            </article>
+            <article>
+              <h3 data-i18n="results.recommendations">建议动作</h3>
+              <ol id="recommendationsList"></ol>
+            </article>
+          </div>
+          <div class="results-row framework-row">
+            <article>
+              <h3 data-i18n="results.frameworkNote">框架说明</h3>
+              <div id="frameworkBlock"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <template id="issueCardTemplate">
+      <article class="issue-card">
+        <header>
+          <div>
+            <p class="impact-tag"></p>
+            <h4></h4>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" />
+            <span></span>
+          </label>
+        </header>
+        <p class="description"></p>
+        <div class="issue-trace">
+          <p class="issue-trace-line issue-source"></p>
+          <p class="issue-trace-line issue-evidence"></p>
+        </div>
+        <footer class="issue-meta">
+          <span class="priority-badge">未选择</span>
+          <div class="priority-actions">
+            <button type="button" class="ghost-btn ghost-compact" data-move="up">▲</button>
+            <button type="button" class="ghost-btn ghost-compact" data-move="down">▼</button>
+          </div>
+        </footer>
+      </article>
+    </template>
+
+    <template id="presenterScript">
+      首页：介绍 ConsultAI 的定位与人机协同方式，展示流程说明与安全边界。
+      项目设定：输入项目名称、主题、目标和分析框架，可一键载入样例项目。
+      上传材料：拖入文件或载入样例材料，说明数据仍由顾问掌控。
+      关键问题：展示 AI 识别的问题，并由顾问勾选、排序、补充。
+      分析结果：输出执行摘要、关键发现、框架分析、风险提示与建议动作，并说明未来可接真实 API。
+    </template>
+
+    <script type="module" src="./js/app.js"></script>
+    <div class="print-report-footer">ConsultAI | Confidential</div>
+  </body>
+</html>

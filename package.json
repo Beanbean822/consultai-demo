@@ -1,0 +1,8 @@
+{
+  "name": "consultai-demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "demo:server": "node server/server.js"
+  }
+}
