@@ -1,4 +1,4 @@
-import { DemoAPI } from './services.js';
+import { DemoAPI } from './services.js?v=20260416-hero3';
 
 const state = {
   language: 'en',
@@ -45,6 +45,7 @@ const issueCount = document.getElementById('issueCount');
 const manualIssueForm = document.getElementById('manualIssueForm');
 const generateAnalysisBtn = document.getElementById('generateAnalysisBtn');
 const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+const downloadPptBtn = document.getElementById('downloadPptBtn');
 const restartBtn = document.getElementById('restartDemo');
 const startLinks = [...document.querySelectorAll('[data-step-link]')];
 const startScriptBtn = document.getElementById('recordScriptBtn');
@@ -235,6 +236,7 @@ const i18n = {
     'buttons.generateResults': '生成分析结果',
     'buttons.restart': '重新开始',
     'buttons.exportPdf': '导出 PDF',
+    'buttons.exportPpt': '导出 PPT',
     'buttons.saveNotes': '保存备注',
     'buttons.saved': '已保存',
     'buttons.loading': '载入中...',
@@ -411,6 +413,7 @@ const i18n = {
     'buttons.generateResults': 'Generate Results',
     'buttons.restart': 'Restart',
     'buttons.exportPdf': 'Export PDF',
+    'buttons.exportPpt': 'Export PPT',
     'buttons.saveNotes': 'Save Notes',
     'buttons.saved': 'Saved',
     'buttons.loading': 'Loading...',
@@ -451,7 +454,9 @@ const i18n = {
     'common.noBackgroundSummary': 'No background summary available.',
     'common.noOgsm': 'No OGSM table available.',
     'common.ogsmSampleHint': 'No sample project loaded. The OGSM table is shown in sample mode.',
-    'common.materialLoadedSummary': 'Loaded into the current demo workflow. The same issue-extraction path will be used during parsing.'
+    'common.materialLoadedSummary': 'Loaded into the current demo workflow. The same issue-extraction path will be used during parsing.',
+    'common.pptUnavailable': 'PPT export component failed to load. Please refresh and try again.',
+    'common.exportPptFailed': 'PPT export failed. Please try again.'
   }
 };
 
@@ -1655,6 +1660,289 @@ const copyPresenterScript = async () => {
   setTimeout(() => (startScriptBtn.textContent = t('common.copiedDefault')), 1200);
 };
 
+const sanitizeFilename = (value = '') =>
+  value
+    .replace(/[\/:*?"<>|]+/g, '-')
+    .replace(/\s+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '');
+
+const addPptBullets = (slide, title, items, box) => {
+  slide.addText(title, {
+    x: box.x,
+    y: box.y,
+    w: box.w,
+    h: 0.28,
+    fontFace: 'Inter',
+    fontSize: 19,
+    bold: true,
+    color: '24306B'
+  });
+  const lines = (items && items.length ? items : [state.language === 'en' ? 'No content' : '暂无内容'])
+    .map((item) => `• ${item}`)
+    .join('
+');
+  slide.addText(lines, {
+    x: box.x,
+    y: box.y + 0.38,
+    w: box.w,
+    h: box.h - 0.38,
+    fontFace: 'Inter',
+    fontSize: 11,
+    color: '49557D',
+    margin: 0.04,
+    valign: 'top',
+    breakLine: false
+  });
+};
+
+const createBasePptSlide = (pptx, title, subtitle = '') => {
+  const slide = pptx.addSlide();
+  slide.background = { color: 'F7F9FF' };
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 0,
+    y: 0,
+    w: 13.333,
+    h: 0.18,
+    line: { color: '5B5CEB', transparency: 100 },
+    fill: { color: '5B5CEB' }
+  });
+  slide.addText('ConsultAI', {
+    x: 0.55,
+    y: 0.35,
+    w: 2.5,
+    h: 0.28,
+    fontFace: 'Inter',
+    fontSize: 15,
+    bold: true,
+    color: '24306B'
+  });
+  slide.addText(title, {
+    x: 0.75,
+    y: 0.82,
+    w: 8.8,
+    h: 0.62,
+    fontFace: 'Inter',
+    fontSize: 24,
+    bold: true,
+    color: '24306B'
+  });
+  if (subtitle) {
+    slide.addText(subtitle, {
+      x: 0.75,
+      y: 1.38,
+      w: 9.4,
+      h: 0.45,
+      fontFace: 'Inter',
+      fontSize: 12,
+      color: '647093'
+    });
+  }
+  return slide;
+};
+
+const exportResultAsPpt = async () => {
+  if (currentStep !== 'results' || !state.analysis) return;
+  const PptxGenJS = window.PptxGenJS;
+  if (!PptxGenJS) {
+    window.alert(t('common.pptUnavailable'));
+    return;
+  }
+
+  try {
+    const pptx = new PptxGenJS();
+    pptx.layout = 'LAYOUT_WIDE';
+    pptx.author = 'ConsultAI';
+    pptx.company = 'ConsultAI';
+    pptx.subject = state.language === 'en' ? 'Consulting analysis summary' : '咨询分析摘要';
+    pptx.title = reportMainTitle?.textContent || 'ConsultAI Report';
+    pptx.lang = state.language;
+    pptx.theme = {
+      headFontFace: 'Inter',
+      bodyFontFace: 'Inter',
+      lang: state.language === 'en' ? 'en-US' : 'zh-CN'
+    };
+
+    const data = state.analysis;
+    const selectedIssues = data.selectedIssues || [];
+    const findings = buildResultFindings(selectedIssues, state.project || {});
+    const frameworkParagraphs = getFrameworkExplanation(state.project || {}, data.frameworkDetails?.description || '');
+    const reportHighlights = buildResultHighlights(selectedIssues);
+    const ogsmRows = state.caseData?.ogsmTable || [];
+
+    const cover = createBasePptSlide(
+      pptx,
+      reportMainTitle?.textContent || (state.language === 'en' ? 'ConsultAI Analysis Report' : 'ConsultAI 分析报告'),
+      reportSubtitle?.textContent || ''
+    );
+    cover.addText(reportLabel?.textContent || t('results.reportKicker'), {
+      x: 0.75,
+      y: 0.48,
+      w: 3.2,
+      h: 0.22,
+      fontFace: 'Inter',
+      fontSize: 9,
+      bold: true,
+      color: '5B5CEB',
+      charSpace: 1.5
+    });
+    cover.addShape(pptx.ShapeType.roundRect, {
+      x: 0.75,
+      y: 2.0,
+      w: 11.8,
+      h: 1.2,
+      rectRadius: 0.08,
+      line: { color: 'D7DDF6', width: 1 },
+      fill: { color: 'FFFFFF' }
+    });
+    const metaLabels = state.language === 'en'
+      ? ['Client / Project', 'Analysis Topic', 'Framework', 'Report Date']
+      : ['客户 / 项目', '分析主题', '分析框架', '报告日期'];
+    const metaValues = [
+      reportProjectName?.textContent || '-',
+      reportTopic?.textContent || '-',
+      reportFramework?.textContent || '-',
+      reportDate?.textContent || '-'
+    ];
+    metaLabels.forEach((label, index) => {
+      const x = 1 + index * 2.95;
+      cover.addText(label, {
+        x,
+        y: 2.22,
+        w: 2.5,
+        h: 0.2,
+        fontFace: 'Inter',
+        fontSize: 8,
+        bold: true,
+        color: '6D779A',
+        charSpace: 0.8
+      });
+      cover.addText(metaValues[index], {
+        x,
+        y: 2.48,
+        w: 2.4,
+        h: 0.28,
+        fontFace: 'Inter',
+        fontSize: 12,
+        color: '24306B',
+        bold: true
+      });
+    });
+    cover.addText('Prepared by ConsultAI', {
+      x: 10.15,
+      y: 6.88,
+      w: 2.4,
+      h: 0.24,
+      align: 'right',
+      fontFace: 'Inter',
+      fontSize: 9,
+      color: '6D779A'
+    });
+
+    const summarySlide = createBasePptSlide(
+      pptx,
+      state.language === 'en' ? 'Executive Summary' : '执行摘要',
+      state.language === 'en'
+        ? 'Core conclusion and selected issues confirmed during issue review.'
+        : '展示关键结论与顾问确认后的核心问题。'
+    );
+    addPptBullets(summarySlide, state.language === 'en' ? 'Summary' : '摘要', data.summary || [], {
+      x: 0.75, y: 1.9, w: 6.0, h: 3.8
+    });
+    addPptBullets(summarySlide, state.language === 'en' ? 'Selected Issues' : '已选问题', data.selectedIssuesSnapshot || data.issuesSnapshot || [], {
+      x: 6.95, y: 1.9, w: 5.6, h: 3.8
+    });
+    summarySlide.addShape(pptx.ShapeType.roundRect, {
+      x: 0.75,
+      y: 5.95,
+      w: 11.8,
+      h: 0.78,
+      rectRadius: 0.05,
+      line: { color: 'D7DDF6', width: 1 },
+      fill: { color: 'FFFFFF' }
+    });
+    const conclusionTitles = state.language === 'en'
+      ? ['Core Conclusion', 'Priority', 'Timeline']
+      : ['核心结论', '建议优先级', '建议执行周期'];
+    const conclusionValues = [
+      reportHighlights.coreConclusion,
+      reportHighlights.priorityText,
+      reportHighlights.timelineText
+    ];
+    conclusionTitles.forEach((label, index) => {
+      const x = 1.0 + index * 3.9;
+      summarySlide.addText(label, {
+        x,
+        y: 6.12,
+        w: 3.2,
+        h: 0.18,
+        fontFace: 'Inter',
+        fontSize: 8,
+        bold: true,
+        color: '5B5CEB',
+        charSpace: 0.8
+      });
+      summarySlide.addText(conclusionValues[index], {
+        x,
+        y: 6.33,
+        w: 3.2,
+        h: 0.22,
+        fontFace: 'Inter',
+        fontSize: 10.5,
+        color: '24306B',
+        bold: index === 0
+      });
+    });
+
+    const findingsSlide = createBasePptSlide(
+      pptx,
+      state.language === 'en' ? 'Findings and Risks' : '关键发现与风险提示',
+      state.language === 'en'
+        ? 'Higher-level observations derived from the selected issues.'
+        : '基于已选问题提炼出的高层经营判断。'
+    );
+    addPptBullets(findingsSlide, state.language === 'en' ? 'Key Findings' : '关键发现', findings, {
+      x: 0.75, y: 1.9, w: 6.0, h: 4.8
+    });
+    addPptBullets(findingsSlide, state.language === 'en' ? 'Risk Alerts' : '风险提示', (data.risks || []).map((risk) => `${risk.title}: ${risk.detail}`), {
+      x: 6.95, y: 1.9, w: 5.6, h: 4.8
+    });
+
+    const ogsmSlide = createBasePptSlide(
+      pptx,
+      state.language === 'en' ? 'OGSM and Recommended Actions' : 'OGSM 结构与建议动作',
+      state.language === 'en'
+        ? 'Framework structure and next actions for execution.'
+        : '用 OGSM 结构承接问题审核，并转入执行动作。'
+    );
+    const ogsmLines = ogsmRows.length
+      ? ogsmRows.flatMap((row, index) => [
+          `${index + 1}. ${row.objective || '-'}`,
+          `${state.language === 'en' ? 'Goals' : '目标'}: ${(row.goals || []).join(state.language === 'en' ? '; ' : '；') || '-'}`,
+          `${state.language === 'en' ? 'Strategies' : '策略'}: ${(row.strategies || []).join(state.language === 'en' ? '; ' : '；') || '-'}`,
+          `${state.language === 'en' ? 'Measures' : '衡量'}: ${(row.measures || []).join(state.language === 'en' ? '; ' : '；') || '-'}`
+        ])
+      : [state.language === 'en' ? 'No OGSM structure available.' : '暂无 OGSM 结构。'];
+    addPptBullets(ogsmSlide, state.language === 'en' ? 'OGSM Structure' : 'OGSM 结构', ogsmLines, {
+      x: 0.75, y: 1.9, w: 6.2, h: 4.9
+    });
+    addPptBullets(ogsmSlide, state.language === 'en' ? 'Recommended Actions' : '建议动作', data.recommendations || [], {
+      x: 7.1, y: 1.9, w: 5.45, h: 3.0
+    });
+    addPptBullets(ogsmSlide, state.language === 'en' ? 'Framework Note' : '框架说明', frameworkParagraphs, {
+      x: 7.1, y: 5.05, w: 5.45, h: 1.75
+    });
+
+    const fileBase = sanitizeFilename(
+      (reportMainTitle?.textContent || state.project?.projectName || 'consultai-report').slice(0, 80)
+    ) || 'consultai-report';
+    await pptx.writeFile({ fileName: `${fileBase}.pptx` });
+  } catch (error) {
+    console.error('Export PPT failed', error);
+    window.alert(t('common.exportPptFailed'));
+  }
+};
+
 const exportResultAsPdf = () => {
   if (currentStep !== 'results' || !state.analysis) return;
   window.print();
@@ -1686,6 +1974,9 @@ const init = async () => {
   restartBtn.addEventListener('click', restartDemoFlow);
   if (downloadPdfBtn) {
     downloadPdfBtn.addEventListener('click', exportResultAsPdf);
+  }
+  if (downloadPptBtn) {
+    downloadPptBtn.addEventListener('click', exportResultAsPpt);
   }
   startDemoBtn.addEventListener('click', () => setStep('setup'));
   backToLanding.addEventListener('click', () => setStep('landing'));

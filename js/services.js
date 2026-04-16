@@ -5,7 +5,7 @@ import {
   sampleDocuments,
   riskTemplates,
   recommendationPool
-} from './fixtures.js';
+} from './fixtures.js?v=20260416-hero3';
 
 const API_BASE_URL =
   typeof window !== 'undefined' && window.location.hostname === 'localhost'
