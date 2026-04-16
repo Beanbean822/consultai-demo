@@ -63,10 +63,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ---------- Layout shell ---------- */
 main {
   width: min(1320px, 94vw);
-  margin: 116px auto 56px;
+  margin: 72px auto 48px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 
 /* ---------- Header ---------- */
@@ -354,33 +354,39 @@ button.secondary:hover { background: var(--blue-soft); color: var(--blue); borde
 /* ---------- Hero / Landing ---------- */
 .grid { display: grid; gap: 32px; }
 .grid.two-col { grid-template-columns: 1fr 1fr; }
-.grid.two-col.balanced { grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr); }
+.grid.two-col.balanced { grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr); }
 .grid.three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .hero-layout {
-  align-items: stretch;
-  padding: 28px 0 28px;
+  align-items: start;
+  padding: 12px 0 22px;
   border-bottom: 1px solid var(--rule);
-  gap: 52px;
+  gap: 44px;
 }
-.hero-layout > .hero-col { display: flex; flex-direction: column; }
+.hero-layout > .hero-col {
+  display: flex;
+  flex-direction: column;
+}
+.hero-layout > .hero-col:first-child {
+  max-width: 760px;
+}
 .hero-layout > .hero-col .how-it-works { height: 100%; }
 
 .hero-col h1 {
   font-family: var(--serif);
-  font-weight: 800;
-  font-size: clamp(2.4rem, 4vw, 4.1rem);
-  line-height: 0.98;
-  letter-spacing: -0.07em;
+  font-weight: 700;
+  font-size: clamp(1.18rem, 1.46vw, 1.82rem);
+  line-height: 1.08;
+  letter-spacing: -0.018em;
   color: var(--ink);
-  margin: 10px 0 18px;
-  max-width: 15ch;
+  margin: 4px 0 12px;
+  max-width: 20ch;
 }
 
 .hero-col h1.is-zh {
   max-width: 18ch;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
 }
 
 .hero-col h1.is-zh span {
@@ -388,10 +394,10 @@ button.secondary:hover { background: var(--blue-soft); color: var(--blue); borde
 }
 
 .hero-col .lead {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--muted);
-  max-width: 64ch;
+  max-width: 62ch;
   border-left: 0;
   padding-left: 0;
 }

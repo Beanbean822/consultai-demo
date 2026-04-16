@@ -541,10 +541,20 @@ const applyLanguage = () => {
   }
 };
 
-const setLanguage = (lang) => {
+const setLanguage = async (lang) => {
   if (!i18n[lang]) return;
   state.language = lang;
+  await syncLocalizedCaseData();
   applyLanguage();
+  renderUploadedItems();
+  renderSampleMaterials();
+  renderCaseContext();
+  if (state.issues.length) renderIssues();
+  if (state.analysis) {
+    renderResults();
+  } else {
+    renderResultsBlank();
+  }
 };
 
 const buildResultFindings = (issues = [], project = {}) => {
@@ -663,6 +673,101 @@ const hasSetupInput = () => {
   return Boolean(values.projectName || values.topic || values.industry || values.goal || values.framework);
 };
 
+const syncProjectStateFromForm = () => {
+  state.project = getSetupFormState();
+};
+
+const refreshLocalizedSampleProjectFields = async () => {
+  if (!state.sampleProjectLoaded) return;
+  const data = await DemoAPI.fetchSampleProject(state.language);
+  setupForm.projectName.value = data.projectName || '';
+  setupForm.topic.value = data.topic || '';
+  setupForm.industry.value = state.caseData?.project?.metadata?.industry || '';
+  setupForm.goal.value = data.goal || '';
+  frameworkSelect.value = data.framework || '';
+  setupForm.backgroundContext.value =
+    state.caseData?.project?.metadata?.companyDescription ||
+    state.caseData?.project?.brief?.caseDescription ||
+    '';
+  syncProjectStateFromForm();
+};
+
+const refreshLocalizedSampleUploads = async () => {
+  if (!state.sampleDocsLoaded || !state.uploads.length) return;
+  const materials = state.caseData?.materials?.sampleDocuments || [];
+  const docs = materials.length
+    ? materials.map((doc, index) => ({
+        name: doc.name,
+        role: doc.role,
+        summary: doc.summary,
+        type: doc.type,
+        sample: true,
+        sampleIndex: index
+      }))
+    : (await DemoAPI.fetchSampleDocs(state.language)).map((doc, index) => ({
+        name: doc,
+        sample: true,
+        sampleIndex: index
+      }));
+  const docMap = new Map(docs.map((doc) => [doc.sampleIndex, doc]));
+  state.uploads = state.uploads.map((item) => {
+    if (!item.sample) return item;
+    return docMap.get(item.sampleIndex) || item;
+  });
+};
+
+const refreshLocalizedIssues = async () => {
+  if (!state.issues.length) return;
+  const localizedIssues = await getIssueSourceForCurrentContext();
+  const localizedMap = new Map(localizedIssues.map((issue) => [issue.id, issue]));
+  state.issues = state.issues.map((issue) => {
+    const localized = localizedMap.get(issue.id);
+    if (!localized) return issue;
+    return {
+      ...issue,
+      ...localized,
+      sample: issue.sample ?? localized.sample ?? false
+    };
+  });
+};
+
+const rebuildAnalysisForLanguage = async () => {
+  if (!state.analysis) return;
+  const selectedIssues = state.selectedIssueIds
+    .map((id) => state.issues.find((issue) => issue.id === id))
+    .filter(Boolean);
+  if (!selectedIssues.length) {
+    state.analysis = null;
+    return;
+  }
+  const payload = {
+    project: state.project,
+    issues: selectedIssues,
+    notes: state.notes,
+    sampleMode: isSampleMode()
+  };
+  const analysis = await DemoAPI.generateAnalysis(payload, state.language);
+  const selectedIssuesSnapshot = selectedIssues.map((issue, index) => `#${index + 1} ${issue.title}`);
+  state.analysis = {
+    ...analysis,
+    selectedIssues,
+    selectedIssuesSnapshot,
+    issuesSnapshot: selectedIssuesSnapshot
+  };
+};
+
+const syncLocalizedCaseData = async () => {
+  state.caseData = await DemoAPI.fetchCaseData(state.language);
+  await populateFrameworks(state.project?.framework || frameworkSelect.value);
+  await refreshLocalizedSampleProjectFields();
+  await refreshLocalizedSampleUploads();
+  if (state.project) {
+    syncProjectStateFromForm();
+  }
+  await refreshLocalizedIssues();
+  await rebuildAnalysisForLanguage();
+};
+
 const updateProgress = () => {
   progressSteps.forEach((step) => {
     const isActive = step.dataset.step === currentStep;
@@ -717,8 +822,8 @@ const setStep = (stepId) => {
   updateProgress();
 };
 
-const populateFrameworks = async () => {
-  const frameworks = await DemoAPI.fetchFrameworks();
+const populateFrameworks = async (selectedId = frameworkSelect.value) => {
+  const frameworks = await DemoAPI.fetchFrameworks(state.language);
   state.frameworks = frameworks;
   frameworkSelect.innerHTML = '';
 
@@ -741,7 +846,7 @@ const populateFrameworks = async () => {
     option.dataset.description = fw.description;
     frameworkSelect.appendChild(option);
   });
-  frameworkSelect.value = '';
+  frameworkSelect.value = selectedId || '';
   updateFrameworkDescription();
 };
 
@@ -967,7 +1072,7 @@ const renderCaseContext = () => {
 const loadSampleProject = async () => {
   loadSampleProjectBtn.disabled = true;
   loadSampleProjectBtn.textContent = t('buttons.loading');
-  const data = await DemoAPI.fetchSampleProject();
+  const data = await DemoAPI.fetchSampleProject(state.language);
   loadSampleProjectBtn.disabled = false;
   loadSampleProjectBtn.textContent = t('buttons.loadSampleProject');
   state.setupSource = 'sample';
@@ -1061,15 +1166,17 @@ const loadSampleDocs = async () => {
           name: doc.name,
           role: doc.role,
           summary: doc.summary,
-          type: doc.type
+          type: doc.type,
+          sample: true,
+          sampleIndex: materials.indexOf(doc)
         });
       }
     );
   } else {
-    const docs = await DemoAPI.fetchSampleDocs();
-    docs.forEach((doc) => {
+    const docs = await DemoAPI.fetchSampleDocs(state.language);
+    docs.forEach((doc, index) => {
       if (existingNames.has(doc)) return;
-      state.uploads.push({ name: doc });
+      state.uploads.push({ name: doc, sample: true, sampleIndex: index });
     });
   }
   state.parsing.completed = false;
@@ -1134,10 +1241,11 @@ const getIssueSourceForCurrentContext = async () => {
       description: item.description || item.question,
       question: item.question,
       source: item.source,
-      evidence: item.evidence
+      evidence: item.evidence,
+      sample: true
     }));
   }
-  return DemoAPI.fetchIssues(frameworkId);
+  return DemoAPI.fetchIssues(frameworkId, state.language);
 };
 
 const enterPainPointStep = async () => {
@@ -1314,7 +1422,7 @@ const generateAnalysis = async () => {
       sampleMode: isSampleMode()
     };
     await wait(1200);
-    const analysis = await DemoAPI.generateAnalysis(payload);
+    const analysis = await DemoAPI.generateAnalysis(payload, state.language);
     const selectedIssuesSnapshot = selectedIssues.map((issue, index) =>
       `#${index + 1} ${issue.title}`
     );
@@ -1553,7 +1661,7 @@ const exportResultAsPdf = () => {
 };
 
 const init = async () => {
-  state.caseData = await DemoAPI.fetchCaseData();
+  state.caseData = await DemoAPI.fetchCaseData(state.language);
   await populateFrameworks();
   applyLanguage();
   updateProgress();
