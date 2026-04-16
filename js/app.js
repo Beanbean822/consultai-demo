@@ -521,7 +521,11 @@ const applyLanguage = () => {
   renderParseStatus();
   renderCaseContext();
   if (state.issues.length) renderIssues();
-  if (state.analysis) renderResults();
+  if (state.analysis) {
+    renderResults();
+  } else {
+    renderResultsBlank();
+  }
 };
 
 const setLanguage = (lang) => {
@@ -653,12 +657,50 @@ const updateProgress = () => {
   });
 };
 
+const renderBlankStateList = (target, fallbackText = '') => {
+  if (!target) return;
+  target.innerHTML = '';
+  if (!fallbackText) return;
+  const li = document.createElement('li');
+  li.textContent = fallbackText;
+  target.appendChild(li);
+};
+
+const renderResultsBlank = () => {
+  const fallbackText = state.language === 'en' ? 'No analysis generated yet.' : '尚未生成分析结果。';
+  renderBlankStateList(summaryList, fallbackText);
+  renderBlankStateList(findingsList);
+  renderBlankStateList(issuesSnapshot);
+  renderBlankStateList(risksList);
+  if (recommendationsList) recommendationsList.innerHTML = '';
+  if (frameworkBlock) frameworkBlock.innerHTML = '';
+  if (ogsmTableBlock) ogsmTableBlock.innerHTML = '';
+  if (reportProjectName) reportProjectName.textContent = '-';
+  if (reportTopic) reportTopic.textContent = '-';
+  if (reportFramework) reportFramework.textContent = '-';
+  if (reportDate) reportDate.textContent = '-';
+  if (reportLabel) reportLabel.textContent = t('results.reportKicker');
+  if (reportMainTitle) reportMainTitle.textContent = '-';
+  if (reportSubtitle) reportSubtitle.textContent = fallbackText;
+  if (coreConclusionText) coreConclusionText.textContent = '-';
+  if (priorityRecommendationText) priorityRecommendationText.textContent = '-';
+  if (executionTimelineText) executionTimelineText.textContent = '-';
+  if (priorityHighCount) priorityHighCount.textContent = '0';
+  if (priorityMediumCount) priorityMediumCount.textContent = '0';
+  if (priorityHighBar) priorityHighBar.style.width = '0%';
+  if (priorityMediumBar) priorityMediumBar.style.width = '0%';
+  if (ogsmFlowPath) ogsmFlowPath.innerHTML = '';
+};
+
 const setStep = (stepId) => {
   if (!sectionMap[stepId]) return;
   currentStep = stepId;
   sections.forEach((section) => {
     section.hidden = section.dataset.section !== stepId;
   });
+  if (stepId === 'results' && !state.analysis) {
+    renderResultsBlank();
+  }
   updateProgress();
 };
 
@@ -1506,6 +1548,7 @@ const init = async () => {
   renderUploadedItems();
   renderSampleMaterials();
   renderParseStatus();
+  renderResultsBlank();
   setupForm.addEventListener('submit', handleSetupSubmit);
   loadSampleProjectBtn.addEventListener('click', loadSampleProject);
   if (useSampleLandingBtn) {
