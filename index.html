@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -27,7 +27,7 @@
       </nav>
       <div class="header-tools">
         <div class="language-toggle" aria-label="Language toggle" data-i18n-aria-label="header.languageToggle">
-          <button type="button" class="lang-btn" data-lang="zh">中文</button>
+          <button type="button" class="lang-btn" data-lang="zh">ZH</button>
           <button type="button" class="lang-btn active" data-lang="en">EN</button>
         </div>
         <button class="ghost-btn" id="recordScriptBtn" title="Copy demo script" data-i18n-title="buttons.script" data-i18n="buttons.script">
@@ -37,7 +37,7 @@
     </header>
 
     <main>
-      <section class="progress" aria-label="演示流程进度" data-i18n-aria-label="progress.aria">
+      <section class="progress" aria-label="Demo workflow progress" data-i18n-aria-label="progress.aria">
         <div class="progress-step" data-step="landing">
           <span>1</span>
           <label data-i18n="progress.landing">Home</label>
@@ -63,82 +63,82 @@
       <section class="demo-section" data-section="landing">
         <div class="grid two-col balanced hero-layout">
           <div class="hero-col">
-            <p class="eyebrow" data-i18n="landing.eyebrow">产品介绍</p>
-            <h1 data-i18n="landing.title">ConsultAI：把复杂业务问题快速整理成清晰可执行的分析</h1>
+            <p class="eyebrow" data-i18n="landing.eyebrow">Product Intro</p>
+            <h1 data-i18n="landing.title">ConsultAI: Turn Complex Business Problems into Clear, Actionable Analysis</h1>
             <p class="lead zh-copy" data-i18n="landing.lead">
-              ConsultAI 是一个人机协同的咨询工作流工具：由人定义项目边界与判断标准，由 AI 协助整理材料、识别问题、组织结构，并输出可继续打磨的分析初稿。
+              ConsultAI is a human + AI consulting workflow tool: people define scope and judgment criteria, while AI organizes materials, extracts issues, structures analysis, and produces a draft output for refinement.
             </p>
             <div class="feature-cards">
               <article>
-                <h3 data-i18n="landing.feature.1.title">智能发现</h3>
-                <p data-i18n="landing.feature.1.body">模式化模板与 AI 提示，帮助快速定位问题与资料。</p>
+                <h3 data-i18n="landing.feature.1.title">Intelligent Discovery</h3>
+                <p data-i18n="landing.feature.1.body">Template-driven prompts and AI assistance help locate the right issues and materials quickly.</p>
               </article>
               <article>
-                <h3 data-i18n="landing.feature.2.title">引导式框架</h3>
-                <p data-i18n="landing.feature.2.body">内置咨询框架，帮助形成结构化分析。</p>
+                <h3 data-i18n="landing.feature.2.title">Guided Frameworks</h3>
+                <p data-i18n="landing.feature.2.body">Built-in consulting frameworks help turn raw input into structured analysis.</p>
               </article>
               <article>
-                <h3 data-i18n="landing.feature.3.title">AI 协同交付</h3>
-                <p data-i18n="landing.feature.3.body">基于人的判断，生成摘要、风险与建议。</p>
+                <h3 data-i18n="landing.feature.3.title">AI Co-Delivery</h3>
+                <p data-i18n="landing.feature.3.body">Based on human judgment, AI generates summaries, risks, and recommendations.</p>
               </article>
             </div>
             <div class="cta-row">
-              <button class="primary" id="startDemoBtn" data-i18n="buttons.startDemo">开始演示</button>
-              <button class="secondary" id="useSampleLandingBtn" data-i18n="buttons.useSampleProject">使用样例项目</button>
+              <button class="primary" id="startDemoBtn" data-i18n="buttons.startDemo">Start Demo</button>
+              <button class="secondary" id="useSampleLandingBtn" data-i18n="buttons.useSampleProject">Use Sample Project</button>
             </div>
           </div>
           <div class="hero-col">
             <div class="card how-it-works">
-              <h2 data-i18n="landing.howItWorks">ConsultAI 如何工作</h2>
+              <h2 data-i18n="landing.howItWorks">How ConsultAI Works</h2>
               <p class="lead card-lead" data-i18n="landing.howLead">
-                人机协同不是替代判断，而是把顾问的工作流变得更快、更稳定，也更容易沉淀为可复用方法。
+                Human + AI does not replace judgment. It makes the consulting workflow faster, more stable, and easier to turn into a reusable method.
               </p>
               <div class="how-grid">
                 <div>
-                  <h3 data-i18n="landing.human.title">人负责</h3>
+                  <h3 data-i18n="landing.human.title">Human</h3>
                   <ul class="plain-list">
-                    <li data-i18n="landing.human.1">定义项目背景</li>
-                    <li data-i18n="landing.human.2">选择分析框架</li>
-                    <li data-i18n="landing.human.3">确认重点问题</li>
-                    <li data-i18n="landing.human.4">修正结论表达</li>
+                    <li data-i18n="landing.human.1">Define project context</li>
+                    <li data-i18n="landing.human.2">Choose the framework</li>
+                    <li data-i18n="landing.human.3">Confirm issue priorities</li>
+                    <li data-i18n="landing.human.4">Refine conclusion wording</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 data-i18n="landing.ai.title">AI 负责</h3>
+                  <h3 data-i18n="landing.ai.title">AI</h3>
                   <ul class="plain-list">
-                    <li data-i18n="landing.ai.1">总结上传材料</li>
-                    <li data-i18n="landing.ai.2">生成问题列表</li>
-                    <li data-i18n="landing.ai.3">组织分析结构</li>
-                    <li data-i18n="landing.ai.4">输出分析初稿</li>
+                    <li data-i18n="landing.ai.1">Summarize uploaded materials</li>
+                    <li data-i18n="landing.ai.2">Generate issue list</li>
+                    <li data-i18n="landing.ai.3">Structure findings</li>
+                    <li data-i18n="landing.ai.4">Produce a draft analysis</li>
                   </ul>
                 </div>
               </div>
               <div class="mini-flow">
-                <span data-i18n="landing.flow.1">项目设定</span>
-                <span data-i18n="landing.flow.2">材料整理</span>
-                <span data-i18n="landing.flow.3">问题确认</span>
-                <span data-i18n="landing.flow.4">生成初稿</span>
+                <span data-i18n="landing.flow.1">Setup</span>
+                <span data-i18n="landing.flow.2">Material Review</span>
+                <span data-i18n="landing.flow.3">Issue Review</span>
+                <span data-i18n="landing.flow.4">Draft Output</span>
               </div>
             </div>
           </div>
         </div>
         <div class="landing-meta">
           <div class="card meta-card">
-            <h3 data-i18n="landing.workflow.title">流程说明</h3>
+            <h3 data-i18n="landing.workflow.title">Workflow</h3>
             <ol class="workflow-list">
-              <li data-i18n="landing.workflow.1">定义项目范围</li>
-              <li data-i18n="landing.workflow.2">上传背景材料</li>
-              <li data-i18n="landing.workflow.3">审核 AI 识别的问题</li>
-              <li data-i18n="landing.workflow.4">生成人机协同分析</li>
-              <li data-i18n="landing.workflow.5">输出结构化结果</li>
+              <li data-i18n="landing.workflow.1">Define project scope</li>
+              <li data-i18n="landing.workflow.2">Upload background materials</li>
+              <li data-i18n="landing.workflow.3">Review AI-identified issues</li>
+              <li data-i18n="landing.workflow.4">Generate human-AI analysis</li>
+              <li data-i18n="landing.workflow.5">Deliver structured results</li>
             </ol>
           </div>
           <div class="card meta-card">
-            <h3 data-i18n="landing.privacy.title">隐私与安全</h3>
+            <h3 data-i18n="landing.privacy.title">Privacy & Security</h3>
             <ul class="plain-list">
-              <li data-i18n="landing.privacy.1">项目级隔离：每次分析按项目独立处理，避免不同客户材料混用。</li>
-              <li data-i18n="landing.privacy.2">最小化暴露：仅处理当前流程所需内容，默认以样例项目 / 模拟数据演示。</li>
-              <li data-i18n="landing.privacy.3">不用于训练：上传材料仅用于当前分析流程，不作为模型训练数据。</li>
+              <li data-i18n="landing.privacy.1">Project-level isolation: each analysis run is handled independently to avoid cross-client material mixing.</li>
+              <li data-i18n="landing.privacy.2">Minimal exposure: only content needed for the current flow is processed, with sample projects / mock data used by default in the demo.</li>
+              <li data-i18n="landing.privacy.3">No training use: uploaded materials are used only for the current analysis flow and not for model training.</li>
             </ul>
           </div>
         </div>
@@ -174,7 +174,7 @@
               <span data-i18n="setup.label.goal">分析目标（可选）</span>
               <textarea
                 name="goal"
-                placeholder="请输入本次分析希望解决的问题或达成的结果"
+                placeholder="Enter the business question or outcome this analysis should address"
                 data-i18n-placeholder="setup.placeholder.goal"
                 rows="4"
               ></textarea>
@@ -187,7 +187,7 @@
               <span data-i18n="setup.label.background">项目背景补充（可选）</span>
               <textarea
                 name="backgroundContext"
-                placeholder="可补充公司当前阶段、行业背景、客户现状或本次案例上下文"
+                placeholder="Add company stage, industry context, client situation, or any additional case background"
                 data-i18n-placeholder="setup.placeholder.background"
                 rows="4"
               ></textarea>
@@ -262,7 +262,7 @@
             <h3 data-i18n="upload.notes">补充备注</h3>
             <textarea
               id="notesInput"
-              placeholder="粘贴访谈记录、会议纪要或补充说明。"
+              placeholder="Paste interview notes, meeting notes, or supplemental context."
               data-i18n-placeholder="upload.placeholder.notes"
               rows="8"
             ></textarea>
@@ -300,7 +300,7 @@
             <p class="eyebrow" data-i18n="step.4">步骤 4</p>
             <h2 data-i18n="pain.title">AI 识别关键问题，顾问确认重点</h2>
             <p data-i18n="pain.subtitle">
-              勾选、调整或补充关键问题，并通过优先级排序体现人机协同判断。
+              Select, adjust, or add issues, then use priority ordering to reflect human-AI collaboration.
             </p>
           </div>
           <div class="section-actions">
@@ -311,7 +311,7 @@
         <div class="card subtle pain-context">
           <h3 data-i18n="pain.contextTitle">问题提炼依据</h3>
           <p class="help-text" id="painContextIntro" data-i18n="pain.contextIntro">
-            这些问题来自样例材料中的背景摘要、观察纪要与关键问题提炼，可由顾问继续筛选和调整。
+            These issues come from the sample material background, observation notes, and key-question extraction, and can be further refined by the consultant.
           </p>
           <ul id="painContextList" class="plain-list"></ul>
         </div>
@@ -496,7 +496,7 @@
           <p class="issue-trace-line issue-evidence"></p>
         </div>
         <footer class="issue-meta">
-          <span class="priority-badge">未选择</span>
+          <span class="priority-badge">Not selected</span>
           <div class="priority-actions">
             <button type="button" class="ghost-btn ghost-compact" data-move="up">▲</button>
             <button type="button" class="ghost-btn ghost-compact" data-move="down">▼</button>

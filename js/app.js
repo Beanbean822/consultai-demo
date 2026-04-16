@@ -1304,7 +1304,7 @@ const renderResults = () => {
   if (data.noteBlock?.length) {
     data.noteBlock.forEach((note) => {
       const li = document.createElement('li');
-      li.textContent = `备注：${note}`;
+      li.textContent = state.language === 'en' ? `Note: ${note}` : `备注：${note}`;
       summaryList.appendChild(li);
     });
   }
