@@ -1680,8 +1680,7 @@ const addPptBullets = (slide, title, items, box) => {
   });
   const lines = (items && items.length ? items : [state.language === 'en' ? 'No content' : '暂无内容'])
     .map((item) => `• ${item}`)
-    .join('
-');
+    .join('\n');
   slide.addText(lines, {
     x: box.x,
     y: box.y + 0.38,
