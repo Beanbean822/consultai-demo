@@ -354,39 +354,39 @@ button.secondary:hover { background: var(--blue-soft); color: var(--blue); borde
 /* ---------- Hero / Landing ---------- */
 .grid { display: grid; gap: 32px; }
 .grid.two-col { grid-template-columns: 1fr 1fr; }
-.grid.two-col.balanced { grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr); }
+.grid.two-col.balanced { grid-template-columns: minmax(0, 1.18fr) minmax(380px, 0.82fr); }
 .grid.three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .hero-layout {
   align-items: start;
   padding: 12px 0 22px;
   border-bottom: 1px solid var(--rule);
-  gap: 44px;
+  gap: 32px;
 }
 .hero-layout > .hero-col {
   display: flex;
   flex-direction: column;
 }
 .hero-layout > .hero-col:first-child {
-  max-width: 760px;
+  max-width: 920px;
 }
 .hero-layout > .hero-col .how-it-works { height: 100%; }
 
 .hero-col h1 {
   font-family: var(--serif);
-  font-weight: 700;
-  font-size: clamp(1.18rem, 1.46vw, 1.82rem);
-  line-height: 1.08;
-  letter-spacing: -0.018em;
+  font-weight: 740;
+  font-size: clamp(2.05rem, 2.7vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
   color: var(--ink);
   margin: 4px 0 12px;
-  max-width: 20ch;
+  max-width: 28ch;
 }
 
 .hero-col h1.is-zh {
-  max-width: 18ch;
-  line-height: 1.1;
-  letter-spacing: -0.012em;
+  max-width: 20ch;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .hero-col h1.is-zh span {
