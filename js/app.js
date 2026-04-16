@@ -72,6 +72,7 @@ const priorityMediumBar = document.getElementById('priorityMediumBar');
 const ogsmFlowPath = document.getElementById('ogsmFlowPath');
 const issueTemplate = document.getElementById('issueCardTemplate');
 const frameworkDescriptionNode = document.getElementById('frameworkDescription');
+const landingTitle = document.getElementById('landingTitle');
 const setupDetailGrid = document.getElementById('setupDetailGrid');
 const setupContext = document.getElementById('setupContext');
 const briefTopic = document.querySelector('.brief-topic');
@@ -493,6 +494,17 @@ const t = (key, vars = {}) => {
   );
 };
 
+const setLandingTitleMarkup = () => {
+  if (!landingTitle) return;
+  if (state.language === 'zh') {
+    landingTitle.innerHTML = 'ConsultAI：<span>把复杂业务问题</span><span>快速整理成清晰可执行的分析</span>';
+    landingTitle.classList.add('is-zh');
+  } else {
+    landingTitle.textContent = t('landing.title');
+    landingTitle.classList.remove('is-zh');
+  }
+};
+
 const applyLanguage = () => {
   const messages = i18n[state.language] || i18n.zh;
   document.documentElement.lang = messages.htmlLang;
@@ -501,6 +513,7 @@ const applyLanguage = () => {
     const key = node.dataset.i18n;
     node.textContent = t(key);
   });
+  setLandingTitleMarkup();
   document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
     node.setAttribute('placeholder', t(node.dataset.i18nPlaceholder));
   });
